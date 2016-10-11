@@ -22,6 +22,15 @@ public class Evento {
     //Cosas del circuito
     private Circuito circuito;
     private int vueltas;
+    private String clima;
+
+    public String getClima() {
+        return clima;
+    }
+
+    public void setClima(String clima) {
+        this.clima = clima;
+    }
 
     public int getIdEvento() {
         return idEvento;
