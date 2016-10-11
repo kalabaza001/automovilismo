@@ -3,16 +3,13 @@ package com.ort.automovilismo.ui;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.ort.automovilismo.R;
-import com.ort.automovilismo.modelo.Comida;
 import com.ort.automovilismo.modelo.Evento;
 
 /**
@@ -54,7 +51,7 @@ public class FragmentoEvento extends Fragment {
        //obtengo el evento y cargo en el layout los datos del evento
         Evento evento=Evento.EVENTOS.get(indiceSeccion);
         titulo.setText(evento.getTitulo());
-        direccion.setText(evento.getDireccion());
+        direccion.setText(evento.getCiudad());
         circuito.setImageResource(evento.getIdDrawable());
         return view;
     }
