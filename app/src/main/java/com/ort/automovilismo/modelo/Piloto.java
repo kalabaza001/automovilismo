@@ -9,6 +9,7 @@ import java.util.List;
  * Modelo de datos estático para alimentar la aplicación
  */
 public class Piloto {
+    private int idPiloto;
     private String nombre;
     private String apellido;
     private String fNac;
@@ -20,6 +21,14 @@ public class Piloto {
     private int podios;
     private int campeonatos;
     private int idDrawable;
+
+    public int getIdPiloto() {
+        return idPiloto;
+    }
+
+    public void setIdPiloto(int idPiloto) {
+        this.idPiloto = idPiloto;
+    }
 
     public String getNombre() {
         return nombre;
