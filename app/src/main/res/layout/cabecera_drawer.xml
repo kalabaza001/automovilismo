@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/primaryColor"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_izquierdo_cabecera"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <!-- Logo Auvo -->
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="@dimen/ancho_logo"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo_auvo3" />
+
+
+
+
+</LinearLayout>
