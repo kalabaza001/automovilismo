@@ -8,7 +8,9 @@ import java.util.Date;
 
 public class Actividad {
     private String titulo;
-    private Date fecha;
+    private Date fechaIncio;
+    private Date fechaFin;
+
 
     public String getTitulo() {
         return titulo;
@@ -18,16 +20,25 @@ public class Actividad {
         this.titulo = titulo;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public Date getFechaIncio() {
+        return fechaIncio;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setFechaIncio(Date fechaIncio) {
+        this.fechaIncio = fechaIncio;
     }
 
-    public Actividad(String titulo, Date fecha) {
+    public Date getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    public Actividad(String titulo, Date fechaIncio, Date fechaFin) {
         this.titulo = titulo;
-        this.fecha = fecha;
+        this.fechaIncio = fechaIncio;
+        this.fechaFin = fechaFin;
     }
 }

@@ -3,6 +3,7 @@ package com.ort.automovilismo.modelo;
 import com.ort.automovilismo.R;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ public class Piloto {
     private int idPiloto;
     private String nombre;
     private String apellido;
-    private String fNac;
+    private Date fNac;
     private int numero;
     private String marcaAuto;
     private String equipo;
@@ -46,11 +47,11 @@ public class Piloto {
         this.apellido = apellido;
     }
 
-    public String getfNac() {
+    public Date getfNac() {
         return fNac;
     }
 
-    public void setfNac(String fNac) {
+    public void setfNac(Date fNac) {
         this.fNac = fNac;
     }
 
@@ -123,6 +124,20 @@ public class Piloto {
         this.idDrawable = idDrawable;
     }
 
+    public Piloto(int idPiloto, String nombre, String apellido, Date fNac, int numero, String marcaAuto, String equipo, String nacionalidad, int puntos, int podios, int campeonatos, int idDrawable) {
+        this.idPiloto = idPiloto;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fNac = fNac;
+        this.numero = numero;
+        this.marcaAuto = marcaAuto;
+        this.equipo = equipo;
+        this.nacionalidad = nacionalidad;
+        this.puntos = puntos;
+        this.podios = podios;
+        this.campeonatos = campeonatos;
+        this.idDrawable = idDrawable;
+    }
 
     public static final List<Piloto> PILOTOS = new ArrayList<Piloto>();
 
