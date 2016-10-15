@@ -8,7 +8,7 @@
     <!--SACAR-->
     <dimen name="altura_miniatura_comida">250dp</dimen>
 
-    <dimen name="altura_miniatura_pilotos">400dp</dimen>
+    <dimen name="altura_miniatura_pilotos">300dp</dimen>
 
     <dimen name="ancho_logo">100dp</dimen>
 

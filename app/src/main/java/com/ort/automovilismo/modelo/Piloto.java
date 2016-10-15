@@ -1,5 +1,7 @@
 package com.ort.automovilismo.modelo;
 
+import android.graphics.Bitmap;
+
 import com.ort.automovilismo.R;
 
 import java.util.ArrayList;
@@ -21,7 +23,8 @@ public class Piloto {
     private int puntos;
     private int podios;
     private int campeonatos;
-    private int idDrawable;
+    private String idDrawable;
+    private Bitmap imagenPiloto;
 
     public int getIdPiloto() {
         return idPiloto;
@@ -111,20 +114,28 @@ public class Piloto {
         this.campeonatos = campeonatos;
     }
 
-    public int getIdDrawable() {
+    public String getIdDrawable() {
         return idDrawable;
     }
 
-    public void setIdDrawable(int idDrawable) {
+    public void setIdDrawable(String idDrawable) {
         this.idDrawable = idDrawable;
     }
 
-    public Piloto(String nombre, int idDrawable) {
+    public Bitmap getImagenPiloto() {
+        return imagenPiloto;
+    }
+
+    public void setImagenPiloto(Bitmap imagenPiloto) {
+        this.imagenPiloto = imagenPiloto;
+    }
+
+    public Piloto(String nombre, String idDrawable) {
         this.nombre = nombre;
         this.idDrawable = idDrawable;
     }
 
-    public Piloto(int idPiloto, String nombre, String apellido, Date fNac, int numero, String marcaAuto, String equipo, String nacionalidad, int puntos, int podios, int campeonatos, int idDrawable) {
+    public Piloto(int idPiloto, String nombre, String apellido, Date fNac, int numero, String marcaAuto, String equipo, String nacionalidad, int puntos, int podios, int campeonatos, String idDrawable, Bitmap imagenPiloto) {
         this.idPiloto = idPiloto;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -137,19 +148,20 @@ public class Piloto {
         this.podios = podios;
         this.campeonatos = campeonatos;
         this.idDrawable = idDrawable;
+        this.imagenPiloto = imagenPiloto;
     }
 
     public static final List<Piloto> PILOTOS = new ArrayList<Piloto>();
 
-    static {
-        PILOTOS.add(new Piloto("Fernando Rama", R.drawable.fernando_rama));
-        PILOTOS.add(new Piloto("Daniel Fresnedo", R.drawable.daniel_fesnedo));
-        PILOTOS.add(new Piloto("Rodrigo Aramendia", R.drawable.rodrigo_aramendia));
-        PILOTOS.add(new Piloto("Jorge Pontet", R.drawable.jorge_pontet));
-        PILOTOS.add(new Piloto("Fabricio Larratea", R.drawable.fabricio_larratea));
+    /*static {
+        PILOTOS.add(new Piloto("Fernando Rama", R.drawable.img_fernando_rama));
+        PILOTOS.add(new Piloto("Daniel Fresnedo", R.drawable.img_daniel_fesnedo));
+        PILOTOS.add(new Piloto("Rodrigo Aramendia", R.drawable.img_rodrigo_aramendia));
+        PILOTOS.add(new Piloto("Jorge Pontet", R.drawable.img_jorge_pontet));
+        PILOTOS.add(new Piloto("Fabricio Larratea", R.drawable.img_fabricio_larratea));
 
 
-    }
+    }*/
 
 
 }
