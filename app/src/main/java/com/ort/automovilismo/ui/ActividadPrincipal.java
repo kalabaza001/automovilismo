@@ -80,7 +80,8 @@ public class ActividadPrincipal extends AppCompatActivity {
                 fragmentoGenerico = new FragmentoPilotos();
                 break;
             case R.id.item_eventos:
-                fragmentoGenerico = new FragmentoEventos();
+                //fragmentoGenerico = new FragmentoEventos();
+                fragmentoGenerico = new FragmentoCampeonato();
                 break;
             case R.id.item_configuracion:
                 startActivity(new Intent(this, ActividadConfiguracion.class));

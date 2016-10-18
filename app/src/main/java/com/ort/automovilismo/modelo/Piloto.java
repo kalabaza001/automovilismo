@@ -135,7 +135,7 @@ public class Piloto {
         this.idDrawable = idDrawable;
     }
 
-    public Piloto(int idPiloto, String nombre, String apellido, Date fNac, int numero, String marcaAuto, String equipo, String nacionalidad, int puntos, int podios, int campeonatos, String idDrawable, Bitmap imagenPiloto) {
+    public Piloto(int idPiloto, String nombre, String apellido, Date fNac, int numero, String marcaAuto, String equipo, String nacionalidad, int puntos, int podios, int campeonatos, String idDrawable) {
         this.idPiloto = idPiloto;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -148,7 +148,7 @@ public class Piloto {
         this.podios = podios;
         this.campeonatos = campeonatos;
         this.idDrawable = idDrawable;
-        this.imagenPiloto = imagenPiloto;
+        //this.imagenPiloto = imagenPiloto;
     }
 
     public static final List<Piloto> PILOTOS = new ArrayList<Piloto>();

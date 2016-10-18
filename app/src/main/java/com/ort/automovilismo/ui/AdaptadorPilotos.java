@@ -1,24 +1,20 @@
 package com.ort.automovilismo.ui;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.Image;
-import android.os.AsyncTask;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.ort.automovilismo.R;
+import com.ort.automovilismo.modelo.ImageLoader;
 import com.ort.automovilismo.modelo.Piloto;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import java.util.List;
 
 import static com.ort.automovilismo.R.id.imageView;
@@ -34,6 +30,7 @@ public class AdaptadorPilotos
         public TextView nombre;
         public ImageView imagenPiloto;
         public TextView marcaAuto;
+        public ImageLoader imageLoader;
 
         public ViewHolder(View v) {
             super(v);
@@ -63,19 +60,29 @@ public class AdaptadorPilotos
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
+        //ImageLoader imageLoader= new ImageLoader(viewHolder.itemView.getContext());
         Piloto item = listadoPiloto.get(i);
         Log.e("Piloto: ", listadoPiloto.get(i).getNombre() + " " + listadoPiloto.get(i).getApellido());
         Log.e("Imagen: ", listadoPiloto.get(i).getIdDrawable());
         Glide.with(viewHolder.itemView.getContext())
-                .load(listadoPiloto.get(i).getImagenPiloto())
+                .load("http://superturismo.com.uy/wp-content/uploads/2015/10/rama-foto.jpg")
                 .centerCrop()
                 .into(viewHolder.imagenPiloto);
+
+        /*Glide.with(viewHolder.itemView.getContext())
+                .load("https://inthecheesefactory.com/uploads/source/glidepicasso/cover.jpg")
+                .centerCrop()
+                .into(viewHolder.imagenPiloto);*/
         viewHolder.nombre.setText(item.getNombre() + " " + item.getApellido());
         viewHolder.numero.setText(Integer.toString(item.getNumero()));
         viewHolder.marcaAuto.setText(item.getMarcaAuto());
+        //Uri imgUri=Uri.parse("file:///home/andres/ORT/Auvo/BackEnd/public/imagenes/img_fernando_rama.png");
+         //   viewHolder.imagenPiloto.setImageURI(imgUri);
        // viewHolder.precio.setText("$" + item.getPrecio());
 
+        ///TextView text=(TextView)vi.findViewById(R.id.text);;
+        //text.setText("item "+position);
+        //imageLoader.DisplayImage("file:///home/andres/ORT/Auvo/BackEnd/public/imagenes/img_fernando_rama.png", viewHolder.imagenPiloto);
+
     }
-
-
 }

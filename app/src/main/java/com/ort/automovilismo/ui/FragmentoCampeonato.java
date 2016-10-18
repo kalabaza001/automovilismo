@@ -3,7 +3,6 @@ package com.ort.automovilismo.ui;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -14,16 +13,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Piloto;
+import com.ort.automovilismo.modelo.RowCampeonato;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -32,15 +30,15 @@ import java.util.ArrayList;
 import java.util.Date;
 
 
-public class FragmentoPilotos extends Fragment {
+public class FragmentoCampeonato extends Fragment {
     private RecyclerView reciclador;
     private LinearLayoutManager layoutManager;
-    private AdaptadorPilotos adaptador;
+    private AdaptadorCampeonato adaptador;
     private ProgressDialog progressDiag;
-    final ArrayList<Piloto> LPilotos = new ArrayList<Piloto>();
+    final ArrayList<RowCampeonato> LRows = new ArrayList<RowCampeonato>();
     private Bitmap imagenPiloto;
 
-    public FragmentoPilotos() {
+    public FragmentoCampeonato() {
     }
 
     @Override
@@ -48,7 +46,7 @@ public class FragmentoPilotos extends Fragment {
                              Bundle savedInstanceState) {
 
         //Consumo servicio
-        new GetDataTask(getActivity()).execute("http://10.0.2.2:8080/pilotos");
+        new GetDataTask(getActivity()).execute("http://10.0.2.2:8080/campeonato");
         //Lo duermo porque a veces tarde minimo
         progressDiag = new ProgressDialog(getActivity());
         progressDiag.setMessage("loading");
@@ -56,7 +54,7 @@ public class FragmentoPilotos extends Fragment {
         //ProgressDialog progressBar = ProgressDialog.show(getActivity(), "Espere por favor...", "Pilotos...", true);
         SystemClock.sleep(1000);
 
-        View view = inflater.inflate(R.layout.fragmento_pilotos, container, false);
+        View view = inflater.inflate(R.layout.fragmento_campeonato, container, false);
 
         reciclador = (RecyclerView) view.findViewById(R.id.reciclador);
         layoutManager = new LinearLayoutManager(getActivity());
@@ -106,10 +104,30 @@ public class FragmentoPilotos extends Fragment {
 
                     //Cargo los datos del JSONArray a arrayList de pilotos
                     for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject jsonObjectPiloto = jsonArray.getJSONObject(i);
+                        JSONObject jsonObjectRowCampeonato = jsonArray.getJSONObject(i);
 
-                        int idPiloto = jsonObjectPiloto.optInt("_id");
-                        String nombre = jsonObjectPiloto.optString("nombre");
+
+                        //Datos de puntaje
+                        String idRowCampeonato = jsonObjectRowCampeonato.optString("_id");
+                        int posicion = jsonObjectRowCampeonato.optInt("posicion");
+                        String primeraFecha = jsonObjectRowCampeonato.optString("1");
+                        String segundaFecha = jsonObjectRowCampeonato.optString("2");
+                        String terceraFecha = jsonObjectRowCampeonato.optString("3");
+                        String cuartaFecha = jsonObjectRowCampeonato.optString("4");
+                        String quintaFecha = jsonObjectRowCampeonato.optString("5");
+                        String sextaFecha = jsonObjectRowCampeonato.optString("6");
+                        String septimaFecha = jsonObjectRowCampeonato.optString("7");
+                        String octavaFecha = jsonObjectRowCampeonato.optString("8");
+                        String novenaFecha = jsonObjectRowCampeonato.optString("9");
+                        String decimaFecha = jsonObjectRowCampeonato.optString("10");
+
+                        RowCampeonato rc = new RowCampeonato(idRowCampeonato,posicion,primeraFecha,segundaFecha);
+
+
+
+                        //Piloto
+                        /*
+                        JSONArray jsonArray2 = jsonObject.getJSONArray("piloto");
                         String apellido = jsonObjectPiloto.optString("apellido");
                         String fNac = jsonObjectPiloto.optString("fNac");
                         int numero = jsonObjectPiloto.optInt("numero");
@@ -127,13 +145,14 @@ public class FragmentoPilotos extends Fragment {
 
                         Date ffNac = new Date();
                         Piloto p = new Piloto(idPiloto, nombre, apellido, ffNac, numero, marcaAuto, equipo, nacionalidad, puntos, podios, campeonatos, idDrawable);
-                        Log.e("piloto:", p.getNombre() + " " + p.getApellido());
-                        LPilotos.add(p);
+                        Log.e("piloto:", p.getNombre() + " " + p.getApellido());*/
+                        Log.e("pos: ", Integer.toString(posicion));
+                        LRows.add(rc);
                     }
                 } catch (Exception ex) {
                     Log.e("ERROR", ex.getMessage());
                 }
-                adaptador = new AdaptadorPilotos(LPilotos);
+                adaptador = new AdaptadorCampeonato(LRows);
                 reciclador.setAdapter(adaptador);
                 progressDiag.dismiss();
                 //viewPilotos();
