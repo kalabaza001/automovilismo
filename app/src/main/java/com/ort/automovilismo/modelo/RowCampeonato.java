@@ -1,6 +1,7 @@
 package com.ort.automovilismo.modelo;
 
 import java.util.Date;
+import java.util.StringTokenizer;
 
 /**
  * Created by andres on 17/10/16.
@@ -14,6 +15,7 @@ public class RowCampeonato {
     private String PrimerFecha;
     private String SegundaFecha;
     private int Total;
+
 
     public String getIdRowCampeonato() {
         return idRowCampeonato;
@@ -56,26 +58,26 @@ public class RowCampeonato {
     }
 
     public int getTotal() {
-        return Integer.getInteger(getPrimerFecha()) + Integer.getInteger(getSegundaFecha());
+        return Integer.valueOf(getPrimerFecha()) + Integer.valueOf(getSegundaFecha());
     }
 
     public void setTotal(int total) {
         Total = total;
     }
 
-    public RowCampeonato(String idRowCampeonato, Piloto piloto, String primerFecha, String segundaFecha, int total) {
+
+    public RowCampeonato(String idRowCampeonato, int posicion, Piloto piloto, String primerFecha, String segundaFecha) {
         this.idRowCampeonato = idRowCampeonato;
         this.piloto = piloto;
         PrimerFecha = primerFecha;
         SegundaFecha = segundaFecha;
-        Total = total;
-    }
-
-    public RowCampeonato(String idRowCampeonato, int posicion, String primerFecha, String segundaFecha) {
         this.posicion = posicion;
+    }
+    public RowCampeonato(String idRowCampeonato, int posicion, String primerFecha, String segundaFecha) {
         this.idRowCampeonato = idRowCampeonato;
-        PrimerFecha = primerFecha;
-        SegundaFecha = segundaFecha;
+        this.posicion = posicion;
+        this.PrimerFecha = primerFecha;
+        this.SegundaFecha = segundaFecha;
         //Total = total;
     }
 }

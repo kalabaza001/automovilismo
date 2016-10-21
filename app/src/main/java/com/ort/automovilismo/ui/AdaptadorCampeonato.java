@@ -19,27 +19,19 @@ import java.util.List;
 public class AdaptadorCampeonato
         extends RecyclerView.Adapter<AdaptadorCampeonato.ViewHolder> {
 
+    private List<RowCampeonato> RowCampeonatoList;
+    private RecyclerClickListener listener;
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        // Campos respectivos de un item
-        public TextView posicion;
-        public TextView numero;
-        public TextView nombre;
-        public TextView primeraF;
-        public TextView segundaF;
-        public TextView total;
-
-        public ViewHolder(View v) {
-            super(v);
-            posicion = (TextView) v.findViewById(R.id.camp_pos);
-            numero = (TextView) v.findViewById(R.id.camp_num);
-            primeraF = (TextView) v.findViewById(R.id.camp_1f);
-        }
+    public void setListener(RecyclerClickListener listener) {
+        this.listener = listener;
     }
 
-    private List<RowCampeonato>RowCampeonatoList;
-    public AdaptadorCampeonato(List<RowCampeonato>lista) {
-        RowCampeonatoList=lista;
+    public AdaptadorCampeonato(List<RowCampeonato> lista) {
+        RowCampeonatoList = lista;
+    }
+
+    public List<RowCampeonato> getRowCampeonatoList() {
+        return RowCampeonatoList;
     }
 
     @Override
@@ -50,7 +42,7 @@ public class AdaptadorCampeonato
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.item_lista_campeonato, viewGroup, false);
+                .inflate(R.layout.item_lista_campeonato2, viewGroup, false);
         return new ViewHolder(v);
     }
 
@@ -58,15 +50,36 @@ public class AdaptadorCampeonato
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         RowCampeonato item = RowCampeonatoList.get(i);
         //Log.e("Piloto: ", listadoPiloto.get(i).getNombre() + " " + listadoPiloto.get(i).getApellido());
-        Log.e("Pos: ", Integer.toString(RowCampeonatoList.get(i).getPosicion()));
-        viewHolder.posicion.setText(item.getPosicion());
-        viewHolder.numero.setText("1");
-        viewHolder.nombre.setText("TEST");
-        viewHolder.primeraF.setText(item.getPrimerFecha());
-
-       // viewHolder.precio.setText("$" + item.getPrecio());
-
+        viewHolder.posicion.setText(Integer.toString(item.getPosicion()));
+        viewHolder.total.setText(Integer.toString(item.getTotal()));
+        viewHolder.nombre.setText(item.getPiloto().getNombre() + " " + item.getPiloto().getApellido());
+        //viewHolder.primeraF.setText(item.getPrimerFecha());
+        //viewHolder.segundaF.setText(item.getSegundaFecha());
     }
 
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        // Campos respectivos de un item
+        public TextView posicion;
+        public TextView numero;
+        public TextView nombre;
+        public TextView primeraF;
+        public TextView segundaF;
+        public TextView total;
+
+        public ViewHolder(View v) {
+            super(v);
+            posicion = (TextView) v.findViewById(R.id.camp2_pos);
+            total = (TextView) v.findViewById(R.id.camp2_total);
+            nombre = (TextView) v.findViewById(R.id.camp2_nombre);
+            v.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onItemClick(view, getLayoutPosition());
+                }
+            });
+            //primeraF = (TextView) v.findViewById(R.id.camp_1f);
+            //segundaF = (TextView) v.findViewById(R.id.camp_2f);
+        }
+    }
 
 }

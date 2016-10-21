@@ -12,7 +12,7 @@
         android:background="@color/background_header_seccion_pilotos"
         android:gravity="center"
         android:padding="8dp"
-        android:text="@string/titulo_pilotos"
+        android:text="@string/titulo_campeonato"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@color/color_light" />
 
@@ -20,5 +20,5 @@
         android:id="@+id/reciclador"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical" />
+        android:scrollbars="horizontal" />
 </LinearLayout>

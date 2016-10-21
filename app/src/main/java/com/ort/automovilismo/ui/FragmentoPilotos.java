@@ -34,7 +34,6 @@ import java.util.Date;
 
 public class FragmentoPilotos extends Fragment {
     private RecyclerView reciclador;
-    private LinearLayoutManager layoutManager;
     private AdaptadorPilotos adaptador;
     private ProgressDialog progressDiag;
     final ArrayList<Piloto> LPilotos = new ArrayList<Piloto>();
@@ -59,12 +58,17 @@ public class FragmentoPilotos extends Fragment {
         View view = inflater.inflate(R.layout.fragmento_pilotos, container, false);
 
         reciclador = (RecyclerView) view.findViewById(R.id.reciclador);
-        layoutManager = new LinearLayoutManager(getActivity());
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         reciclador.setLayoutManager(layoutManager);
 
         //adaptador = new AdaptadorPilotos(LPilotos);
         //reciclador.setAdapter(adaptador);
         return view;
+    }
+
+    public static Fragment newInstance() {
+        return new FragmentoPilotos();
     }
 
     private class GetDataTask extends AsyncTask<String, Void, String> {
@@ -108,7 +112,7 @@ public class FragmentoPilotos extends Fragment {
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObjectPiloto = jsonArray.getJSONObject(i);
 
-                        int idPiloto = jsonObjectPiloto.optInt("_id");
+                        String idPiloto = jsonObjectPiloto.optString("_id");
                         String nombre = jsonObjectPiloto.optString("nombre");
                         String apellido = jsonObjectPiloto.optString("apellido");
                         String fNac = jsonObjectPiloto.optString("fNac");
@@ -120,8 +124,6 @@ public class FragmentoPilotos extends Fragment {
                         int podios = jsonObjectPiloto.optInt("podios");
                         int campeonatos = jsonObjectPiloto.optInt("campeonatos");
                         String idDrawable = jsonObjectPiloto.optString("idDrawable");
-                        //new DownloadImage().execute("http://www.mividanueva.org/images/flores.png");
-
 
                         //Date ffNac = formatter.parse(fNac);
 
@@ -140,50 +142,6 @@ public class FragmentoPilotos extends Fragment {
             }
         }
     }
-
-
-    /*private class DownloadImage extends AsyncTask<String, Void, Bitmap> {
-        ProgressDialog mProgressDialog ;
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            // Create a progressdialog
-            mProgressDialog = new ProgressDialog(getActivity());
-            // Set progressdialog title
-            mProgressDialog.setTitle("Download Image Tutorial");
-            // Set progressdialog message
-            mProgressDialog.setMessage("Loading...");
-            mProgressDialog.setIndeterminate(false);
-            // Show progressdialog
-            mProgressDialog.show();
-        }
-
-        @Override
-        protected Bitmap doInBackground(String... URL) {
-
-            String imageURL = URL[0];
-
-            Bitmap bitmap = null;
-            try {
-                // Download Image from URL
-                InputStream input = new java.net.URL(imageURL).openStream();
-                // Decode Bitmap
-                bitmap = BitmapFactory.decodeStream(input);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return bitmap;
-        }
-
-        @Override
-        protected void onPostExecute(Bitmap result) {
-            // Set the bitmap into ImageView
-            imagenPiloto = result;
-            //image.setImageBitmap(result);
-            // Close progressdialog
-            mProgressDialog.dismiss();
-        }
-    }*/
 }
 
 

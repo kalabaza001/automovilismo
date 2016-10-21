@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Piloto;
@@ -28,15 +30,13 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 public class FragmentoCampeonato extends Fragment {
     private RecyclerView reciclador;
-    private LinearLayoutManager layoutManager;
     private AdaptadorCampeonato adaptador;
     private ProgressDialog progressDiag;
-    final ArrayList<RowCampeonato> LRows = new ArrayList<RowCampeonato>();
-    private Bitmap imagenPiloto;
 
     public FragmentoCampeonato() {
     }
@@ -46,23 +46,26 @@ public class FragmentoCampeonato extends Fragment {
                              Bundle savedInstanceState) {
 
         //Consumo servicio
+        View view = inflater.inflate(R.layout.fragmento_campeonato2, container, false);
+        return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         new GetDataTask(getActivity()).execute("http://10.0.2.2:8080/campeonato");
-        //Lo duermo porque a veces tarde minimo
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         progressDiag = new ProgressDialog(getActivity());
         progressDiag.setMessage("loading");
         progressDiag.show();
-        //ProgressDialog progressBar = ProgressDialog.show(getActivity(), "Espere por favor...", "Pilotos...", true);
-        SystemClock.sleep(1000);
-
-        View view = inflater.inflate(R.layout.fragmento_campeonato, container, false);
-
         reciclador = (RecyclerView) view.findViewById(R.id.reciclador);
-        layoutManager = new LinearLayoutManager(getActivity());
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         reciclador.setLayoutManager(layoutManager);
-
-        //adaptador = new AdaptadorPilotos(LPilotos);
-        //reciclador.setAdapter(adaptador);
-        return view;
     }
 
     private class GetDataTask extends AsyncTask<String, Void, String> {
@@ -93,6 +96,7 @@ public class FragmentoCampeonato extends Fragment {
 
         protected void onPostExecute(String result) {
             if (m_activity != null) {
+                List<RowCampeonato> LRows = new ArrayList<>();
                 try {
                     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-M-dd hh:mm:ss");
                     progressDiag.dismiss();
@@ -110,7 +114,7 @@ public class FragmentoCampeonato extends Fragment {
                         //Datos de puntaje
                         String idRowCampeonato = jsonObjectRowCampeonato.optString("_id");
                         int posicion = jsonObjectRowCampeonato.optInt("posicion");
-                        String primeraFecha = jsonObjectRowCampeonato.optString("1");
+                        String primerFecha = jsonObjectRowCampeonato.optString("1");
                         String segundaFecha = jsonObjectRowCampeonato.optString("2");
                         String terceraFecha = jsonObjectRowCampeonato.optString("3");
                         String cuartaFecha = jsonObjectRowCampeonato.optString("4");
@@ -120,14 +124,12 @@ public class FragmentoCampeonato extends Fragment {
                         String octavaFecha = jsonObjectRowCampeonato.optString("8");
                         String novenaFecha = jsonObjectRowCampeonato.optString("9");
                         String decimaFecha = jsonObjectRowCampeonato.optString("10");
-
-                        RowCampeonato rc = new RowCampeonato(idRowCampeonato,posicion,primeraFecha,segundaFecha);
-
-
+                        String total = String.valueOf(primerFecha) + String.valueOf(segundaFecha);
 
                         //Piloto
-                        /*
-                        JSONArray jsonArray2 = jsonObject.getJSONArray("piloto");
+                        JSONObject jsonObjectPiloto = jsonObjectRowCampeonato.getJSONObject("piloto");
+                        String idPiloto = jsonObjectPiloto.optString("_id");
+                        String nombre = jsonObjectPiloto.optString("nombre");
                         String apellido = jsonObjectPiloto.optString("apellido");
                         String fNac = jsonObjectPiloto.optString("fNac");
                         int numero = jsonObjectPiloto.optInt("numero");
@@ -138,71 +140,34 @@ public class FragmentoCampeonato extends Fragment {
                         int podios = jsonObjectPiloto.optInt("podios");
                         int campeonatos = jsonObjectPiloto.optInt("campeonatos");
                         String idDrawable = jsonObjectPiloto.optString("idDrawable");
-                        //new DownloadImage().execute("http://www.mividanueva.org/images/flores.png");
 
-
-                        //Date ffNac = formatter.parse(fNac);
 
                         Date ffNac = new Date();
-                        Piloto p = new Piloto(idPiloto, nombre, apellido, ffNac, numero, marcaAuto, equipo, nacionalidad, puntos, podios, campeonatos, idDrawable);
-                        Log.e("piloto:", p.getNombre() + " " + p.getApellido());*/
-                        Log.e("pos: ", Integer.toString(posicion));
+                        Piloto piloto = new Piloto(idPiloto, nombre, apellido, ffNac, numero, marcaAuto, equipo, nacionalidad, puntos, podios, campeonatos, idDrawable);
+                        Log.d("piloto:", piloto.getNombre() + " " + piloto.getApellido());
+                        Log.d("pos: ", Integer.toString(posicion) + "_" + primerFecha + "_" + segundaFecha);
+
+                        RowCampeonato rc = new RowCampeonato(idRowCampeonato, posicion, piloto, primerFecha, segundaFecha);
+
                         LRows.add(rc);
                     }
                 } catch (Exception ex) {
                     Log.e("ERROR", ex.getMessage());
                 }
                 adaptador = new AdaptadorCampeonato(LRows);
+                adaptador.setListener(new RecyclerClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        getFragmentManager().beginTransaction().replace(R.id.contenedor_principal, FragmentoPilotos.newInstance()).addToBackStack(null).commit();
+                     //   Toast.makeText(getContext(), adaptador.getRowCampeonatoList().get(position).getPosicion()+"", Toast.LENGTH_LONG).show();
+                    }
+                });
                 reciclador.setAdapter(adaptador);
                 progressDiag.dismiss();
                 //viewPilotos();
             }
         }
     }
-
-
-    /*private class DownloadImage extends AsyncTask<String, Void, Bitmap> {
-        ProgressDialog mProgressDialog ;
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            // Create a progressdialog
-            mProgressDialog = new ProgressDialog(getActivity());
-            // Set progressdialog title
-            mProgressDialog.setTitle("Download Image Tutorial");
-            // Set progressdialog message
-            mProgressDialog.setMessage("Loading...");
-            mProgressDialog.setIndeterminate(false);
-            // Show progressdialog
-            mProgressDialog.show();
-        }
-
-        @Override
-        protected Bitmap doInBackground(String... URL) {
-
-            String imageURL = URL[0];
-
-            Bitmap bitmap = null;
-            try {
-                // Download Image from URL
-                InputStream input = new java.net.URL(imageURL).openStream();
-                // Decode Bitmap
-                bitmap = BitmapFactory.decodeStream(input);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return bitmap;
-        }
-
-        @Override
-        protected void onPostExecute(Bitmap result) {
-            // Set the bitmap into ImageView
-            imagenPiloto = result;
-            //image.setImageBitmap(result);
-            // Close progressdialog
-            mProgressDialog.dismiss();
-        }
-    }*/
 }
 
 

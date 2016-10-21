@@ -12,7 +12,7 @@ import java.util.List;
  * Modelo de datos estático para alimentar la aplicación
  */
 public class Piloto {
-    private int idPiloto;
+    private String idPiloto;
     private String nombre;
     private String apellido;
     private Date fNac;
@@ -26,11 +26,11 @@ public class Piloto {
     private String idDrawable;
     private Bitmap imagenPiloto;
 
-    public int getIdPiloto() {
+    public String getIdPiloto() {
         return idPiloto;
     }
 
-    public void setIdPiloto(int idPiloto) {
+    public void setIdPiloto(String idPiloto) {
         this.idPiloto = idPiloto;
     }
 
@@ -135,7 +135,7 @@ public class Piloto {
         this.idDrawable = idDrawable;
     }
 
-    public Piloto(int idPiloto, String nombre, String apellido, Date fNac, int numero, String marcaAuto, String equipo, String nacionalidad, int puntos, int podios, int campeonatos, String idDrawable) {
+    public Piloto(String idPiloto, String nombre, String apellido, Date fNac, int numero, String marcaAuto, String equipo, String nacionalidad, int puntos, int podios, int campeonatos, String idDrawable) {
         this.idPiloto = idPiloto;
         this.nombre = nombre;
         this.apellido = apellido;
