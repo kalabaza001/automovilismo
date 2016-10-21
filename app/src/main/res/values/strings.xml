@@ -14,6 +14,7 @@
     <string name="item_calendario">Calendario</string>
     <string name="item_pilotos">Pilotos</string>
     <string name="item_eventos">Eventos</string>
+    <string name="item_campeonato">Campeonato</string>
 
     <!--SaCAR-->
     <string name="titulo_comidas_populares">Lo más pedido</string>

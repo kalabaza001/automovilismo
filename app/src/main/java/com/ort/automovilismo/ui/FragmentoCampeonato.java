@@ -141,15 +141,14 @@ public class FragmentoCampeonato extends Fragment {
                         int campeonatos = jsonObjectPiloto.optInt("campeonatos");
                         String idDrawable = jsonObjectPiloto.optString("idDrawable");
 
-
                         Date ffNac = new Date();
                         Piloto piloto = new Piloto(idPiloto, nombre, apellido, ffNac, numero, marcaAuto, equipo, nacionalidad, puntos, podios, campeonatos, idDrawable);
                         Log.d("piloto:", piloto.getNombre() + " " + piloto.getApellido());
                         Log.d("pos: ", Integer.toString(posicion) + "_" + primerFecha + "_" + segundaFecha);
 
-                        RowCampeonato rc = new RowCampeonato(idRowCampeonato, posicion, piloto, primerFecha, segundaFecha);
+                        RowCampeonato rowCampeonato = new RowCampeonato(idRowCampeonato, posicion, piloto,primerFecha,segundaFecha,terceraFecha,cuartaFecha,quintaFecha,sextaFecha,septimaFecha, octavaFecha, novenaFecha,decimaFecha);
 
-                        LRows.add(rc);
+                        LRows.add(rowCampeonato);
                     }
                 } catch (Exception ex) {
                     Log.e("ERROR", ex.getMessage());

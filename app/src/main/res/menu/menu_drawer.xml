@@ -25,14 +25,16 @@
             android:icon="@drawable/configuracion"
             android:title="@string/item_eventos" />
 
-
         <item
             android:id="@+id/item_pilotos"
             android:icon="@drawable/ic_calendario"
             android:title="@string/item_pilotos" />
 
-
+        <item
+            android:id="@+id/item_campeonato"
+            android:icon="@drawable/ic_calendario"
+            android:title="@string/item_campeonato" />
 
     </group>
-
+    
 </menu>
