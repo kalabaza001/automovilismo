@@ -1,5 +1,8 @@
 package com.ort.automovilismo.modelo;
 
+import android.util.Log;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.StringTokenizer;
 
@@ -22,7 +25,7 @@ public class RowCampeonato {
     private String octavaFecha;
     private String novenaFecha;
     private String decimaFecha;
-    private int Total;
+    private int total;
 
 
     public String getIdRowCampeonato() {
@@ -130,16 +133,35 @@ public class RowCampeonato {
     }
 
     public int getTotal() {
-        try {
-            return Integer.valueOf(getPrimerFecha()) + Integer.valueOf(getSegundaFecha()) + Integer.valueOf(getTercerFecha()) + Integer.valueOf(getQuintaFecha()) + Integer.valueOf(getSextaFecha()) + Integer.valueOf(getSeptimaFecha()) + Integer.valueOf(getOctavaFecha()) + Integer.valueOf(getNovenaFecha()) + Integer.valueOf(getDecimaFecha());
-        }catch (Exception e){
-            return  0;
+        ArrayList <String> fechas = new ArrayList<>();
+        fechas.add(primerFecha);
+        fechas.add(segundaFecha);
+        fechas.add(tercerFecha);
+        fechas.add(cuartaFecha);
+        fechas.add(quintaFecha);
+        fechas.add(sextaFecha);
+        fechas.add(septimaFecha);
+        fechas.add(octavaFecha);
+        fechas.add(novenaFecha);
+        fechas.add(decimaFecha);
+        setTotal(0);
+        Log.d("Piloto: " ,getPiloto().getApellido());
+        for (String fecha:fechas) {
+            try {
+                int puntoFecha = Integer.valueOf(fecha);
+                Log.d("Puntos:", fecha);
+                total += puntoFecha;
+            }catch (Exception e){
+                Log.e("Suma puntos fecha",fecha);
+            }
         }
-
+            setTotal(total);
+            Log.d("Total", Integer.toString(total));
+            return total;
     }
 
     public void setTotal(int total) {
-        Total = total;
+        this.total = total;
     }
 
 

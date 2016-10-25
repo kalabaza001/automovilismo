@@ -49,7 +49,7 @@ public class AdaptadorCampeonato
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         RowCampeonato item = RowCampeonatoList.get(i);
-        //Log.e("Piloto: ", listadoPiloto.get(i).getNombre() + " " + listadoPiloto.get(i).getApellido());
+        //Log.d("Piloto: " + item.getPiloto().getApellido() + , listadoPiloto.get(i).getNombre() + " " + listadoPiloto.get(i).getApellido());
         viewHolder.posicion.setText(Integer.toString(item.getPosicion()));
         viewHolder.total.setText(Integer.toString(item.getTotal()));
         viewHolder.nombre.setText(item.getPiloto().getNombre() + " " + item.getPiloto().getApellido());
