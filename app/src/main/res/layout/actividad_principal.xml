@@ -16,6 +16,11 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/cabecera_drawer"
+
+        app:itemTextColor="@android:color/white"
+        android:background="@color/primaryColor"
+        app:itemIconTint="@android:color/holo_blue_dark"
+
         app:menu="@menu/menu_drawer" />
 
 </android.support.v4.widget.DrawerLayout>

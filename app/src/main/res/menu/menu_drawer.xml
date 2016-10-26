@@ -27,7 +27,7 @@
 
         <item
             android:id="@+id/item_pilotos"
-            android:icon="@drawable/ic_calendario"
+            android:icon="@drawable/ic_casco"
             android:title="@string/item_pilotos" />
 
         <item
