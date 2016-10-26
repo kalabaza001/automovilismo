@@ -1,34 +1,33 @@
 package com.ort.automovilismo.modelo;
 
-import java.util.Date;
-
 /**
  * Created by Andres on 10/10/2016.
  */
 
 public class Circuito {
-    private int idCircuito;
-    private String Nombre;
+    private String idCircuito;
+    private String nombre;
+    private String numero;
     private double longitud;
     private int curvas;
     private String record;
     private String historia;
-    private int idDrawable;
+    private String idDrawable;
 
-    public int getIdCircuito() {
+    public String getIdCircuito() {
         return idCircuito;
     }
 
-    public void setIdCircuito(int idCircuito) {
+    public void setIdCircuito(String idCircuito) {
         this.idCircuito = idCircuito;
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
     public void setNombre(String nombre) {
-        Nombre = nombre;
+        nombre = nombre;
     }
 
     public double getLongitud() {
@@ -63,17 +62,26 @@ public class Circuito {
         this.historia = historia;
     }
 
-    public int getIdDrawable() {
+    public String getIdDrawable() {
         return idDrawable;
     }
 
-    public void setIdDrawable(int idDrawable) {
+    public void setIdDrawable(String idDrawable) {
         this.idDrawable = idDrawable;
     }
 
-    public Circuito(int idCircuito, String nombre, double longitud, int curvas, String record, String historia, int idDrawable) {
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public Circuito(String idCircuito, String nombre, String numero,double longitud, int curvas, String record, String historia, String idDrawable) {
         this.idCircuito = idCircuito;
-        Nombre = nombre;
+        this.nombre = nombre;
+        this.numero = numero;
         this.longitud = longitud;
         this.curvas = curvas;
         this.record = record;

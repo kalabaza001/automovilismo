@@ -89,7 +89,9 @@ public class ActividadPrincipal extends AppCompatActivity {
             case R.id.item_campeonato:
                 fragmentoGenerico = new FragmentoCampeonato();
                 break;
-
+            case R.id.item_circuito:
+                fragmentoGenerico = new FragmentoCircuito();
+                break;
         }
         if (fragmentoGenerico != null) {
             fragmentManager

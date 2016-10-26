@@ -9,18 +9,18 @@
     <string name="item_cuenta">Mi Cuenta</string>
     <string name="item_categorias">Categorías</string>
     <string name="item_configuracion">Configuración</string>
-
-
     <string name="item_calendario">Calendario</string>
     <string name="item_pilotos">Pilotos</string>
     <string name="item_eventos">Eventos</string>
     <string name="item_campeonato">Campeonato</string>
+    <string name="item_circuito">Circuitos</string>
 
     <!--SaCAR-->
     <string name="titulo_comidas_populares">Lo más pedido</string>
 
     <string name="titulo_pilotos">Pilotos</string>
     <string name="titulo_campeonato">Campeonato</string>
+    <string name="titulo_circuitos">Circuitos</string>
 
     <string name="titulo_tab_platillos">PLATILLOS</string>
     <string name="titulo_tab_bebidas">BEBIDAS</string>

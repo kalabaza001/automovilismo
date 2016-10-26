@@ -35,6 +35,11 @@
             android:icon="@drawable/ic_calendario"
             android:title="@string/item_campeonato" />
 
+        <item
+            android:id="@+id/item_circuito"
+            android:icon="@drawable/ic_calendario"
+            android:title="@string/item_circuito" />
+
     </group>
     
 </menu>
