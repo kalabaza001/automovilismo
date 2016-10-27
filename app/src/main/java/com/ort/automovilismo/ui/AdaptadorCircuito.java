@@ -48,7 +48,7 @@ public class AdaptadorCircuito
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         Circuito item = listaCircuitos.get(i);
-
+        //Lala
         viewHolder.nombre.setText(item.getNombre());
         viewHolder.numero.setText(item.getNumero());
         viewHolder.longitud.setText(String.valueOf(item.getLongitud()));
