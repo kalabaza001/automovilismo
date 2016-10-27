@@ -48,6 +48,7 @@ public class FragmentoPilotos extends Fragment {
 
         //Consumo servicio
         new GetDataTask(getActivity()).execute("http://10.0.2.2:8080/pilotos");
+        //new GetDataTask(getActivity()).execute("http://www.baremos.uy:8000/pilotos");
         //Lo duermo porque a veces tarde minimo
         progressDiag = new ProgressDialog(getActivity());
         progressDiag.setMessage("loading");

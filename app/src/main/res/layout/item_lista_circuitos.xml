@@ -7,7 +7,7 @@
     <ImageView
         android:id="@+id/circuito_miniatura"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/altura_miniatura_pilotos"
+        android:layout_height="wrap_content"
         android:scaleType="centerCrop" />
 
     <TextView

@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/miniatura_pilotos"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/altura_miniatura_pilotos"
+        android:layout_height="wrap_content"
         android:scaleType="centerCrop" />
-
 
     <TextView
         android:id="@+id/numero_pilotos"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="left|bottom"
-        android:paddingBottom="16dp"
-        android:paddingLeft="16dp"
+        android:layout_gravity="left"
+        android:layout_below="@id/miniatura_pilotos"
+        android:paddingLeft="@dimen/espacio_norma_1"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text=""
         android:textStyle="bold"
@@ -31,11 +29,12 @@
 
     <TextView
         android:id="@+id/nombre_pilotos"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="left|bottom"
-        android:paddingBottom="20dp"
-        android:paddingLeft="16dp"
+        android:layout_gravity="left"
+        android:layout_below="@id/numero_pilotos"
+        android:paddingLeft="@dimen/espacio_norma_1"
+
         android:textSize="30sp"
         android:textStyle="bold"
         android:text=""
@@ -44,16 +43,16 @@
 
     <TextView
         android:id="@+id/marca_auto_pilotos"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/nombre_pilotos"
         android:layout_gravity="left|bottom"
-        android:paddingBottom="16dp"
-        android:paddingLeft="16dp"
+        android:paddingLeft="@dimen/espacio_norma_1"
+
         android:text=""
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textColor="@android:color/black"
         />
 
 
-
-</LinearLayout>
+</RelativeLayout>

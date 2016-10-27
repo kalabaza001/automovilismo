@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Circuito;
 import com.ort.automovilismo.modelo.RowCampeonato;
@@ -55,7 +56,10 @@ public class AdaptadorCircuito
         viewHolder.curvas.setText(String.valueOf(item.getCurvas()));
         Glide.with(viewHolder.itemView.getContext())
                 .load("http://www.auvo.com.uy/wp-content/uploads/2016/08/circuitoN3-fondo.jpg")
-                .centerCrop()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .error(R.drawable.auvo_error)
+                // .centerCrop()
+                .fitCenter()
                 .into(viewHolder.imagenCircuito);
         //viewHolder.primeraF.setText(item.getPrimerFecha());
         //viewHolder.segundaF.setText(item.getSegundaFecha());

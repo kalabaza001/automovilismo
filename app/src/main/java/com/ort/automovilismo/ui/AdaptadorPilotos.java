@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.ImageLoader;
 import com.ort.automovilismo.modelo.Piloto;
@@ -64,11 +65,16 @@ public class AdaptadorPilotos
         Piloto item = listadoPiloto.get(i);
         Log.e("Piloto: ", listadoPiloto.get(i).getNombre() + " " + listadoPiloto.get(i).getApellido());
         Log.e("Imagen: ", listadoPiloto.get(i).getIdDrawable());
-        Glide.with(viewHolder.itemView.getContext())
 
+
+        Glide.with(viewHolder.itemView.getContext())
                // .load("http://superturismo.com.uy/wp-content/uploads/2015/10/rama-foto.jpg")
                 .load("http://imageshack.com/a/img921/4559/kLKnfL.jpg")
-                .centerCrop()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+               // .placeholder(R.drawable.placeholder)
+                .error(R.drawable.auvo_error)
+               // .centerCrop()
+                .fitCenter()
                 .into(viewHolder.imagenPiloto);
 
 
