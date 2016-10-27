@@ -4,8 +4,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Circuito;
 import com.ort.automovilismo.modelo.RowCampeonato;
@@ -51,6 +53,10 @@ public class AdaptadorCircuito
         viewHolder.numero.setText(item.getNumero());
         viewHolder.longitud.setText(String.valueOf(item.getLongitud()));
         viewHolder.curvas.setText(String.valueOf(item.getCurvas()));
+        Glide.with(viewHolder.itemView.getContext())
+                .load("http://www.auvo.com.uy/wp-content/uploads/2016/08/circuitoN3-fondo.jpg")
+                .centerCrop()
+                .into(viewHolder.imagenCircuito);
         //viewHolder.primeraF.setText(item.getPrimerFecha());
         //viewHolder.segundaF.setText(item.getSegundaFecha());
     }
@@ -61,16 +67,22 @@ public class AdaptadorCircuito
         public TextView numero;
         public TextView longitud;
         public TextView curvas;
+        public ImageView imagenCircuito;
         public TextView record;
         public TextView historia;
 
 
         public ViewHolder(View v) {
             super(v);
+            imagenCircuito = (ImageView) v.findViewById(R.id.circuito_miniatura);
             nombre = (TextView) v.findViewById(R.id.circuito_nombre);
             numero = (TextView) v.findViewById(R.id.circuito_numero);
             longitud = (TextView) v.findViewById(R.id.circuito_longitud);
             curvas = (TextView) v.findViewById(R.id.circuito_curvas);
+
+
+
+
             //// TODO: 25/10/16 Hacer implementacion de record e historia
             //record = (TextView) v.findViewById(R.id.circuito_record);
             //historia = (TextView) v.findViewById(R.id.circuito_historia);
