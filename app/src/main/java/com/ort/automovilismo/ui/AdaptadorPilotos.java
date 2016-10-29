@@ -63,9 +63,8 @@ public class AdaptadorPilotos
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         //ImageLoader imageLoader= new ImageLoader(viewHolder.itemView.getContext());
         Piloto item = listadoPiloto.get(i);
-        Log.e("Piloto: ", listadoPiloto.get(i).getNombre() + " " + listadoPiloto.get(i).getApellido());
-        Log.e("Imagen: ", listadoPiloto.get(i).getIdDrawable());
-
+        //Log.d("Piloto: ", listadoPiloto.get(i).getNombre() + " " + listadoPiloto.get(i).getApellido());
+        //Log.d("Imagen: ", listadoPiloto.get(i).getIdDrawable());
 
         Glide.with(viewHolder.itemView.getContext())
                // .load("http://superturismo.com.uy/wp-content/uploads/2015/10/rama-foto.jpg")

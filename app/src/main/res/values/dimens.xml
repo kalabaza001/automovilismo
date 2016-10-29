@@ -9,6 +9,8 @@
     <dimen name="altura_miniatura_comida">250dp</dimen>
 
     <dimen name="altura_miniatura_pilotos">380dp</dimen>
+    <dimen name="altura_miniatura_circuito">300dp</dimen>
+
 
     <dimen name="ancho_logo">100dp</dimen>
 

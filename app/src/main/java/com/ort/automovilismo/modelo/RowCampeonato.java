@@ -2,6 +2,7 @@ package com.ort.automovilismo.modelo;
 
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.StringTokenizer;
@@ -10,7 +11,7 @@ import java.util.StringTokenizer;
  * Created by andres on 17/10/16.
  */
 
-public class RowCampeonato {
+public class RowCampeonato implements Serializable {
 
     private String idRowCampeonato;
     private int posicion;
@@ -145,18 +146,18 @@ public class RowCampeonato {
         fechas.add(novenaFecha);
         fechas.add(decimaFecha);
         setTotal(0);
-        Log.d("Piloto: " ,getPiloto().getApellido());
+        //Log.d("Piloto: " ,getPiloto().getApellido());
         for (String fecha:fechas) {
             try {
                 int puntoFecha = Integer.valueOf(fecha);
-                Log.d("Puntos:", fecha);
+                //Log.d("Puntos:", fecha);
                 total += puntoFecha;
             }catch (Exception e){
-                Log.e("Suma puntos fecha",fecha);
+                //Log.e("Suma puntos fecha",fecha);
             }
         }
             setTotal(total);
-            Log.d("Total", Integer.toString(total));
+            //Log.d("Total", Integer.toString(total));
             return total;
     }
 
@@ -179,5 +180,24 @@ public class RowCampeonato {
         this.octavaFecha = octavaFecha;
         this.novenaFecha = novenaFecha;
         this.decimaFecha = decimaFecha;
+    }
+
+    @Override
+    public String toString() {
+        return "RowCampeonato{" +
+                "posicion=" + posicion +
+                ", primerFecha='" + primerFecha + '\'' +
+                ", segundaFecha='" + segundaFecha + '\'' +
+                ", tercerFecha='" + tercerFecha + '\'' +
+                ", cuartaFecha='" + cuartaFecha + '\'' +
+                ", quintaFecha='" + quintaFecha + '\'' +
+                ", sextaFecha='" + sextaFecha + '\'' +
+                ", septimaFecha='" + septimaFecha + '\'' +
+                ", octavaFecha='" + octavaFecha + '\'' +
+                ", novenaFecha='" + novenaFecha + '\'' +
+                ", decimaFecha='" + decimaFecha + '\'' +
+                ", total=" + total +
+                ", piloto=" + piloto.getNombre() + " " + piloto.getApellido() +
+                '}';
     }
 }

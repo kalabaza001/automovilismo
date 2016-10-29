@@ -2,12 +2,14 @@ package com.ort.automovilismo.ui;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -25,6 +27,7 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -143,8 +146,8 @@ public class FragmentoCampeonato extends Fragment {
 
                         Date ffNac = new Date();
                         Piloto piloto = new Piloto(idPiloto, nombre, apellido, ffNac, numero, marcaAuto, equipo, nacionalidad, puntos, podios, campeonatos, idDrawable);
-                        Log.d("piloto:", piloto.getNombre() + " " + piloto.getApellido());
-                        Log.d("pos: ", Integer.toString(posicion) + "_" + primerFecha + "_" + segundaFecha);
+                        //Log.d("piloto:", piloto.getNombre() + " " + piloto.getApellido());
+                        //Log.d("pos: ", Integer.toString(posicion) + "_" + primerFecha + "_" + segundaFecha);
 
                         RowCampeonato rowCampeonato = new RowCampeonato(idRowCampeonato, posicion, piloto,primerFecha,segundaFecha,terceraFecha,cuartaFecha,quintaFecha,sextaFecha,septimaFecha, octavaFecha, novenaFecha,decimaFecha);
 
@@ -157,8 +160,31 @@ public class FragmentoCampeonato extends Fragment {
                 adaptador.setListener(new RecyclerClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        getFragmentManager().beginTransaction().replace(R.id.contenedor_principal, FragmentoPilotos.newInstance()).addToBackStack(null).commit();
-                     //   Toast.makeText(getContext(), adaptador.getRowCampeonatoList().get(position).getPosicion()+"", Toast.LENGTH_LONG).show();
+                       // getFragmentManager().beginTransaction().replace(R.id.contenedor_principal, FragmentoPilotos.newInstance()).addToBackStack(null).commit();
+
+
+                        // Create fragment and give it an argument for the selected article
+                        FragmentoPilotosCampeonato newFragment = new FragmentoPilotosCampeonato();
+                        Bundle args = new Bundle();
+                        //Paso los datos al otro fragment
+                        Log.d("ANTES DE MANDAR: ", String.valueOf(position));
+                        RowCampeonato rowCampeonato = adaptador.getRowCampeonatoList().get(position);
+                        args.putSerializable(FragmentoPilotosCampeonato.ROW_CAMPEONATO, rowCampeonato);
+                        newFragment.setArguments(args);
+
+                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+                        // Replace whatever is in the fragment_container view with this fragment,
+                        // and add the transaction to the back stack so the user can navigate back
+                        transaction.replace(R.id.contenedor_principal, newFragment);
+                        transaction.addToBackStack(null);
+
+                        // Commit the transaction
+                        transaction.commit();
+
+                        //   Toast.makeText(getContext(), adaptador.getRowCampeonatoList().get(position).getPosicion()+"", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getContext(), adaptador.getRowCampeonatoList().get(position).getPosicion() + " - " + adaptador.getRowCampeonatoList().get(position).getPiloto().getApellido(), Toast.LENGTH_LONG).show();
+
                     }
                 });
                 reciclador.setAdapter(adaptador);
