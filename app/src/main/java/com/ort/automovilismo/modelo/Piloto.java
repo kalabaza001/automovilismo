@@ -151,6 +151,13 @@ public class Piloto {
         //this.imagenPiloto = imagenPiloto;
     }
 
+    public Piloto(String nombre, String apellido, int numero, String marcaAuto){
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.numero = numero;
+        this.marcaAuto = marcaAuto;
+    }
+
     public static final List<Piloto> PILOTOS = new ArrayList<Piloto>();
 
     /*static {

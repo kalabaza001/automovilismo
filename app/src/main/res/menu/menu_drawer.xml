@@ -40,6 +40,12 @@
             android:icon="@drawable/ic_calendario"
             android:title="@string/item_circuito" />
 
+        <item
+            android:id="@+id/item_carrera"
+            android:icon="@drawable/ic_calendario"
+            android:title="@string/item_carrera" />
+
+
     </group>
     
 </menu>

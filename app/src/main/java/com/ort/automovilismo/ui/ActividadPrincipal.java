@@ -91,6 +91,9 @@ public class ActividadPrincipal extends AppCompatActivity {
             case R.id.item_circuito:
                 fragmentoGenerico = new FragmentoCircuito();
                 break;
+            case R.id.item_carrera:
+                fragmentoGenerico = new FragmentoCarrera();
+                break;
         }
         if (fragmentoGenerico != null) {
             fragmentManager
