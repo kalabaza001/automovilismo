@@ -12,10 +12,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.ort.automovilismo.R;
+import com.ort.automovilismo.modelo.Utils;
 
 public class ActividadPrincipal extends AppCompatActivity {
+
+
 
     private DrawerLayout drawerLayout;
 
@@ -71,7 +82,7 @@ public class ActividadPrincipal extends AppCompatActivity {
                 fragmentoGenerico = new FragmentoInicio();
                 break;
             case R.id.item_cuenta:
-                fragmentoGenerico = new FragmentoCuenta();
+                fragmentoGenerico = new FragmentoMapa();
                 break;
             case R.id.item_categorias:
                 fragmentoGenerico = new FragmentoCategorias();
@@ -89,7 +100,7 @@ public class ActividadPrincipal extends AppCompatActivity {
                 fragmentoGenerico = new FragmentoCampeonato();
                 break;
             case R.id.item_circuito:
-                fragmentoGenerico = new FragmentoCircuito();
+                fragmentoGenerico = new FragmentoCircuitos();
                 break;
             case R.id.item_carrera:
                 fragmentoGenerico = new FragmentoCarrera();
@@ -105,6 +116,8 @@ public class ActividadPrincipal extends AppCompatActivity {
         // Setear título actual
         setTitle(itemDrawer.getTitle());
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

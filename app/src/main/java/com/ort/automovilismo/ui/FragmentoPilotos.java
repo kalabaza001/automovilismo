@@ -18,6 +18,7 @@ import android.widget.ImageView;
 
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Piloto;
+import com.ort.automovilismo.modelo.Utils;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -47,8 +48,12 @@ public class FragmentoPilotos extends Fragment {
                              Bundle savedInstanceState) {
 
         //Consumo servicio
-        new GetDataTask(getActivity()).execute("http://10.0.2.2:8080/pilotos");
-        //new GetDataTask(getActivity()).execute("http://www.baremos.uy:8000/pilotos");
+       // new GetDataTask(getActivity()).execute("http://10.0.2.2:8080/pilotos");
+        new GetDataTask(getActivity()).execute(Utils.getServidor() + "pilotos");
+       // new GetDataTask(getActivity()).execute("http://www.baremos.uy:8000/pilotos");
+
+
+
         //Lo duermo porque a veces tarde minimo
         progressDiag = new ProgressDialog(getActivity());
         progressDiag.setMessage("loading");

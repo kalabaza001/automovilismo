@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,12 +16,15 @@ import com.ort.automovilismo.modelo.RowCampeonato;
 
 import java.util.List;
 
+import static com.ort.automovilismo.R.id.btnIr;
+
 
 public class AdaptadorCircuito
         extends RecyclerView.Adapter<AdaptadorCircuito.ViewHolder> {
 
     private List<Circuito> listaCircuitos;
     private RecyclerClickListener listener;
+
 
     public void setListener(RecyclerClickListener listener) {
         this.listener = listener;
@@ -52,8 +56,10 @@ public class AdaptadorCircuito
         //Lalaaa
         viewHolder.nombre.setText(item.getNombre());
         viewHolder.numero.setText(item.getNumero());
-        viewHolder.longitud.setText(String.valueOf(item.getLongitud()));
-        viewHolder.curvas.setText(String.valueOf(item.getCurvas()));
+        //viewHolder.longitud.setText(String.valueOf(item.getLongitud()));
+       // viewHolder.curvas.setText(String.valueOf(item.getCurvas()));
+
+
         Glide.with(viewHolder.itemView.getContext())
                 .load("http://www.auvo.com.uy/wp-content/uploads/2016/08/circuitoN3-fondo.jpg")
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -69,11 +75,12 @@ public class AdaptadorCircuito
         // Campos respectivos de un item
         public TextView nombre;
         public TextView numero;
-        public TextView longitud;
-        public TextView curvas;
+     //   public TextView longitud;
+     //   public TextView curvas;
         public ImageView imagenCircuito;
-        public TextView record;
-        public TextView historia;
+      //  public TextView record;
+     //   public TextView historia;
+     //   public Button botonIr;
 
 
         public ViewHolder(View v) {
@@ -81,9 +88,8 @@ public class AdaptadorCircuito
             imagenCircuito = (ImageView) v.findViewById(R.id.circuito_miniatura);
             nombre = (TextView) v.findViewById(R.id.circuito_nombre);
             numero = (TextView) v.findViewById(R.id.circuito_numero);
-            longitud = (TextView) v.findViewById(R.id.circuito_longitud);
-            curvas = (TextView) v.findViewById(R.id.circuito_curvas);
-
+         //   longitud = (TextView) v.findViewById(R.id.circuito_longitud);
+         //   curvas = (TextView) v.findViewById(R.id.circuito_curvas);
 
 
 

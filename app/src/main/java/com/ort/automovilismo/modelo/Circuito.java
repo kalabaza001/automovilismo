@@ -1,18 +1,20 @@
 package com.ort.automovilismo.modelo;
 
-/**
- * Created by Andres on 10/10/2016.
- */
+import java.io.Serializable;
 
-public class Circuito {
+
+
+public class Circuito  implements Serializable {
     private String idCircuito;
     private String nombre;
     private String numero;
-    private double longitud;
+    private double largo;
     private int curvas;
     private String record;
     private String historia;
     private String idDrawable;
+    private double latitud;
+    private double longitud;
 
     public String getIdCircuito() {
         return idCircuito;
@@ -30,12 +32,12 @@ public class Circuito {
         nombre = nombre;
     }
 
-    public double getLongitud() {
-        return longitud;
+    public double getLargo() {
+        return largo;
     }
 
-    public void setLongitud(double longitud) {
-        this.longitud = longitud;
+    public void setLargo(double longitud) {
+        this.largo = longitud;
     }
 
     public int getCurvas() {
@@ -78,14 +80,34 @@ public class Circuito {
         this.numero = numero;
     }
 
-    public Circuito(String idCircuito, String nombre, String numero,double longitud, int curvas, String record, String historia, String idDrawable) {
+    public double getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(double latitud) {
+        this.latitud = latitud;
+    }
+
+    public double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
+    }
+
+    public Circuito(String idCircuito, String nombre, String numero, double largo, int curvas, String record, String historia, String idDrawable, double latitud, double longitud) {
         this.idCircuito = idCircuito;
         this.nombre = nombre;
         this.numero = numero;
-        this.longitud = longitud;
+        this.largo = largo;
         this.curvas = curvas;
         this.record = record;
         this.historia = historia;
         this.idDrawable = idDrawable;
+        this.latitud = latitud;
+        this.longitud = longitud;
     }
+
+
 }

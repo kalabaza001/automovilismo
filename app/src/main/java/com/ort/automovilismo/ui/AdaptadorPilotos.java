@@ -67,11 +67,12 @@ public class AdaptadorPilotos
         //Log.d("Imagen: ", listadoPiloto.get(i).getIdDrawable());
 
         Glide.with(viewHolder.itemView.getContext())
-               // .load("http://superturismo.com.uy/wp-content/uploads/2015/10/rama-foto.jpg")
-                .load("http://imageshack.com/a/img921/4559/kLKnfL.jpg")
+
+               // .load("http://imageshack.com/a/img921/4559/kLKnfL.jpg")
+                .load("http://www.baremos.uy:8000/images_pilotos/alejandro_borio.jpg")
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                // .placeholder(R.drawable.placeholder)
-                .error(R.drawable.auvo_error)
+                //.error(R.drawable.auvo_error)
                // .centerCrop()
                 .fitCenter()
                 .into(viewHolder.imagenPiloto);

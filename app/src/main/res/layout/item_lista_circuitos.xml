@@ -1,106 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="?attr/listPreferredItemHeight"
+                android:orientation="vertical"
+                android:paddingBottom="8dp"
+                android:background="?attr/selectableItemBackground"
+                android:layout_margin="8dp"
+                android:paddingTop="8dp">
     <ImageView
         android:id="@+id/circuito_miniatura"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="72dp"
         android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/circuito_nombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingBottom="16dp"
+        android:paddingBottom="8dp"
         android:paddingLeft="16dp"
         android:text="nombre"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textColor="@android:color/black" />
+        android:layout_toRightOf="@+id/circuito_miniatura"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textColor="@android:color/holo_red_dark" />
 
     <TextView
         android:id="@+id/circuito_numero"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="left|bottom"
         android:paddingBottom="16dp"
         android:paddingLeft="16dp"
         android:text="numero"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:layout_toRightOf="@+id/circuito_miniatura"
+        android:layout_below="@+id/circuito_nombre"
+        android:textAppearance="?attr/textAppearanceListItemSmall"
         android:textColor="@android:color/black" />
-
-    <android.support.v7.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="16dp"
-            android:paddingLeft="16dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@android:color/black"
-            android:text="@string/longitud"/>
-
-
-        <TextView
-            android:id="@+id/circuito_longitud"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="16dp"
-            android:paddingLeft="5dp"
-            android:text="Longitud"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@android:color/black" />
-
-        <TextView
-            android:id="@+id/mts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="16dp"
-            android:paddingLeft="5dp"
-            android:layout_toRightOf="@+id/circuito_longitud"
-            android:text="Mts"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@android:color/black" />
-
-    </android.support.v7.widget.LinearLayoutCompat>
-
-    <android.support.v7.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="8dp"
-            android:paddingLeft="16dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@android:color/black"
-            android:text="@string/curvas"
-            android:id="@+id/circuito_curvas_text" />
-
-        <TextView
-            android:id="@+id/circuito_curvas"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="8dp"
-            android:paddingLeft="5dp"
-            android:text="10"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@android:color/black" />
-    </android.support.v7.widget.LinearLayoutCompat>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="3dp"
         android:background="@color/primaryColor"
-        android:layout_below="@id/camp2_total"
+        android:layout_below="@id/circuito_miniatura"
         android:id="@+id/view" />
 
-</LinearLayout>
+</RelativeLayout>

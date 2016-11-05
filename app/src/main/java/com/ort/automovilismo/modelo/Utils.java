@@ -4,6 +4,12 @@ package com.ort.automovilismo.modelo;
  * Created by andres on 17/10/16.
  */
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+
 import java.io.InputStream;
 import java.io.OutputStream;
 
@@ -24,4 +30,39 @@ public class Utils {
         }
         catch(Exception ex){}
     }
+
+
+    public static boolean isOnline(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return (netInfo != null && netInfo.isConnectedOrConnecting());
+    }
+
+    public static boolean isGPS(Context context){
+        LocationManager locManager = (LocationManager)context.getSystemService(context.LOCATION_SERVICE);
+        return locManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+    }
+
+    public static void guardar(Context context,String propiedad,String valor)
+    {
+        SharedPreferences prefs = context.getSharedPreferences("Configuracion", Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(propiedad, valor);
+        editor.commit();
+    }
+
+    public static String leer(Context context,String propiedad)
+    {
+        SharedPreferences prefs =
+                context.getSharedPreferences("Configuracion", Context.MODE_PRIVATE);
+
+        return prefs.getString(propiedad, "");
+    }
+
+    public static String getServidor(){
+        return "http://192.168.2.106:8080/";
+
+    }
+
 }
