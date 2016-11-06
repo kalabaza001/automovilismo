@@ -10,19 +10,33 @@ import java.util.List;
  * Modelo de datos estático para alimentar la aplicación
  */
 public class Evento {
-    private int idEvento;
+    private String idEvento;
     private String titulo;
     private Date fecha;
-    private int idDrawable;
-    private String ciudad;
-    private int latitud;
-    private int longitud;
-    private List<Piloto>listaPiloto;
-    private List<Actividad>listaActividades;
-    //Cosas del circuito
+    private String sFecha;
     private Circuito circuito;
+    private List<Actividad>listaActividades;
+    private List<ResultadoEvento>resultados;
+    //Cosas del circuito
+
     private int vueltas;
     private String clima;
+
+    public String getsFecha() {
+        return sFecha;
+    }
+
+    public void setsFecha(String sFecha) {
+        this.sFecha = sFecha;
+    }
+
+    public List<ResultadoEvento> getResultados() {
+        return resultados;
+    }
+
+    public void setResultados(List<ResultadoEvento> resultados) {
+        this.resultados = resultados;
+    }
 
     public String getClima() {
         return clima;
@@ -32,11 +46,11 @@ public class Evento {
         this.clima = clima;
     }
 
-    public int getIdEvento() {
+    public String getIdEvento() {
         return idEvento;
     }
 
-    public void setIdEvento(int idEvento) {
+    public void setIdEvento(String idEvento) {
         this.idEvento = idEvento;
     }
 
@@ -54,46 +68,6 @@ public class Evento {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
-    }
-
-    public int getIdDrawable() {
-        return idDrawable;
-    }
-
-    public void setIdDrawable(int idDrawable) {
-        this.idDrawable = idDrawable;
-    }
-
-    public String getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
-    }
-
-    public int getLatitud() {
-        return latitud;
-    }
-
-    public void setLatitud(int latitud) {
-        this.latitud = latitud;
-    }
-
-    public int getLongitud() {
-        return longitud;
-    }
-
-    public void setLongitud(int longitud) {
-        this.longitud = longitud;
-    }
-
-    public List<Piloto> getListaPiloto() {
-        return listaPiloto;
-    }
-
-    public void setListaPiloto(List<Piloto> listaPiloto) {
-        this.listaPiloto = listaPiloto;
     }
 
     public List<Actividad> getListaActividades() {
@@ -121,29 +95,41 @@ public class Evento {
     }
 
     // New
-    public Evento(String titulo, Date fecha, int idDrawable, String ciudad,List<Piloto>listaPiloto) {
+    public Evento(String titulo, Date fecha,List<ResultadoEvento>listaResultado) {
         this.titulo = titulo;
         this.fecha = fecha;
-        this.idDrawable = idDrawable;
-        this.ciudad = ciudad;
-        this.listaPiloto=listaPiloto;
+        this.resultados = listaResultado;
     }
 
-    public Evento(int idEvento, String titulo, Date fecha, int idDrawable, String ciudad, int latitud, int longitud, List<Piloto> listaPiloto, List<Actividad> listaActividades, Circuito circuito, int vueltas) {
+    public Evento(String idEvento, String titulo, Date fecha, List<Piloto> lis, List<Actividad> listaActividades, Circuito circuito, int vueltas) {
         this.idEvento = idEvento;
         this.titulo = titulo;
         this.fecha = fecha;
-        this.idDrawable = idDrawable;
-        this.ciudad = ciudad;
-        this.latitud = latitud;
-        this.longitud = longitud;
-        this.listaPiloto = listaPiloto;
         this.listaActividades = listaActividades;
         this.circuito = circuito;
         this.vueltas = vueltas;
     }
 
-    public static final List<Evento> EVENTOS = new ArrayList<Evento>();
+    public Evento(String idEvento, String titulo, String sFecha, Circuito circuito, List<Actividad> listaActividades, ArrayList<ResultadoEvento> listaResultado) {
+        this.idEvento = idEvento;
+        this.titulo = titulo;
+        this.sFecha = sFecha;
+        this.circuito = circuito;
+        this.listaActividades = listaActividades;
+        this.resultados = listaResultado;
+    }
+
+    @Override
+    public String toString() {
+        return "Evento{" +
+                "idEvento='" + idEvento + '\'' +
+                ", titulo='" + titulo + '\'' +
+                ", sFecha='" + sFecha + '\'' +
+                ", Circuito='" + circuito.getNombre() + " - " + circuito.getNumero() + '\'' +
+                '}';
+    }
+
+    /*public static final List<Evento> EVENTOS = new ArrayList<Evento>();
 
 
     static {
@@ -174,5 +160,5 @@ public class Evento {
         listaPilotoEvento5.add(Piloto.PILOTOS.get(1));
         EVENTOS.add(new Evento("Fecha 5", new Date(2016,5,23),R.drawable.pastel_fresa,"Montevideo",listaPilotoEvento5));
 
-    }
+    }*/
 }

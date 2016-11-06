@@ -151,6 +151,12 @@ public class Piloto {
         //this.imagenPiloto = imagenPiloto;
     }
 
+    public Piloto(String nombre, String marcaAuto, int idDrawable){
+        this.nombre = nombre;
+        this.idDrawable = String.valueOf(idDrawable);
+        this.marcaAuto = marcaAuto;
+    }
+
     public Piloto(String nombre, String apellido, int numero, String marcaAuto){
         this.nombre = nombre;
         this.apellido = apellido;
@@ -158,14 +164,14 @@ public class Piloto {
         this.marcaAuto = marcaAuto;
     }
 
-    public static final List<Piloto> PILOTOS = new ArrayList<Piloto>();
+    /*public static final List<Piloto> PILOTOS = new ArrayList<Piloto>();
 
-    /*static {
-        PILOTOS.add(new Piloto("Fernando Rama", R.drawable.img_fernando_rama));
-        PILOTOS.add(new Piloto("Daniel Fresnedo", R.drawable.img_daniel_fesnedo));
-        PILOTOS.add(new Piloto("Rodrigo Aramendia", R.drawable.img_rodrigo_aramendia));
-        PILOTOS.add(new Piloto("Jorge Pontet", R.drawable.img_jorge_pontet));
-        PILOTOS.add(new Piloto("Fabricio Larratea", R.drawable.img_fabricio_larratea));
+     {
+        PILOTOS.add(new Piloto("Fernando Rama", "SIMCA" ,R.drawable.img_fernando_rama));
+        PILOTOS.add(new Piloto("Daniel Fresnedo", "ROLLS ROYS", R.drawable.img_daniel_fesnedo));
+        PILOTOS.add(new Piloto("Rodrigo Aramendia", "DKW", R.drawable.img_rodrigo_aramendia));
+        PILOTOS.add(new Piloto("Jorge Pontet", "LADA", R.drawable.img_jorge_pontet));
+        PILOTOS.add(new Piloto("Fabricio Larratea", "MIURA" ,R.drawable.img_fabricio_larratea));
 
 
     }*/

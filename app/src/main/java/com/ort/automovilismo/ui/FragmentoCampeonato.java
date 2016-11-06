@@ -170,7 +170,6 @@ public class FragmentoCampeonato extends Fragment {
                         FragmentoPilotosCampeonato newFragment = new FragmentoPilotosCampeonato();
                         Bundle args = new Bundle();
                         //Paso los datos al otro fragment
-                        Log.d("ANTES DE MANDAR: ", String.valueOf(position));
                         RowCampeonato rowCampeonato = adaptador.getRowCampeonatoList().get(position);
                         args.putSerializable(FragmentoPilotosCampeonato.ROW_CAMPEONATO, rowCampeonato);
                         newFragment.setArguments(args);

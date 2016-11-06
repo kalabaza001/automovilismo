@@ -109,5 +109,13 @@ public class Circuito  implements Serializable {
         this.longitud = longitud;
     }
 
-
+    public Circuito(String nombre, String numero, double longitud, int curvas, String record, String historia, String idDrawable) {
+        this.nombre = nombre;
+        this.numero = numero;
+        this.longitud = longitud;
+        this.curvas = curvas;
+        this.record = record;
+        this.historia = historia;
+        this.idDrawable = idDrawable;
+    }
 }
