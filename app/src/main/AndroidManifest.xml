@@ -8,39 +8,17 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Theme.RicoPaRico" >
-
-        <activity
-            android:name="com.ort.automovilismo.ui.FirstMapActivity"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.ConNavigationDrawer">
-           <!-- <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
-        </activity>
-
+        android:theme="@style/Theme.Automovilismo" >
 
         <activity
             android:name="com.ort.automovilismo.ui.MapsActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.ConNavigationDrawer">
-
-           <!-- <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
-
         </activity>
-
-
 
         <activity
             android:name="com.ort.automovilismo.ui.ActividadPrincipal"
@@ -55,15 +33,6 @@
 
         </activity>
 
-
-        <activity
-            android:name="com.ort.automovilismo.ui.ActividadConfiguracion"
-            android:label="@string/titulo_actividad_configuracion"
-            android:parentActivityName="com.ort.automovilismo.ui.ActividadPrincipal" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.ort.automovilismo.ui.ActividadPrincipal" />
-        </activity>
         <!--
         ATTENTION: This was auto-generated to add Google Play services to your project for
         App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -75,7 +44,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
         />
-
 
     </application>
 

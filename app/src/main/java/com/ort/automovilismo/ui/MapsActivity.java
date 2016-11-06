@@ -108,7 +108,7 @@ public class MapsActivity extends AppCompatActivity
         map.getUiSettings().setZoomControlsEnabled(true);
 
 
-        LatLng cine = new LatLng(latitud, longitud);
+        LatLng circuito = new LatLng(latitud, longitud);
 
         LatLng aqui;
 
@@ -144,11 +144,9 @@ public class MapsActivity extends AppCompatActivity
             }
         }
             //Necesitamos posicion actual del gps
-
-
         map.addMarker(new MarkerOptions()
-                .position(cine)
-                .title("Cine")
+                .position(circuito)
+                .title("Circuito")
         );
         map.addMarker(new MarkerOptions()
                 .position(aqui)
@@ -157,9 +155,9 @@ public class MapsActivity extends AppCompatActivity
 
         // Getting URL to the Google Directions API
         MarkerPoints.add(aqui);
-        MarkerPoints.add(cine);
+        MarkerPoints.add(circuito);
 
-        String url = getUrl(aqui, cine);
+        String url = getUrl(aqui, circuito);
         FetchUrl FetchUrl = new FetchUrl();
         FetchUrl.execute(url);
         //map.animateCamera(CameraUpdateFactory.newLatLngZoom(aqui, 10.0f));
@@ -351,8 +349,5 @@ public class MapsActivity extends AppCompatActivity
             }
         }
     }
-
-
-
 }
 

@@ -2,8 +2,6 @@ package com.ort.automovilismo.modelo;
 
 import java.io.Serializable;
 
-
-
 public class Circuito  implements Serializable {
     private String idCircuito;
     private String nombre;

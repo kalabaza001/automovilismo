@@ -99,8 +99,6 @@ public class FragmentoCircuito extends Fragment {
                     Intent intent;
                     if(Utils.isOnline(getActivity())){
                         intent = new Intent(getActivity(),MapsActivity.class);
-                        // String auxLatitud=latitud.getText().toString();
-                        // String auxLongitud=longitud.getText().toString();
 
                         String auxLatitud = mCircuito.getLatitud()+"";
                         String auxLongitud = mCircuito.getLongitud()+"";
@@ -112,10 +110,6 @@ public class FragmentoCircuito extends Fragment {
                     }
                     else
                         Toast.makeText(getActivity(), "Sin conexion no se puede visualizar el mapa", Toast.LENGTH_SHORT).show();
-
-
-
-
             }
         });
         return view;

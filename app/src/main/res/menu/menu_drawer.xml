@@ -4,48 +4,27 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/item_inicio"
-            android:checked="true"
             android:icon="@drawable/inicio"
-            android:title="@string/item_inicio" />
-        <item
-            android:id="@+id/item_cuenta"
-            android:icon="@drawable/cuenta"
-            android:title="@string/item_cuenta" />
-        <item
-            android:id="@+id/item_categorias"
-            android:icon="@drawable/categorias"
-            android:title="@string/item_categorias" />
-        <item
-            android:id="@+id/item_configuracion"
-            android:icon="@drawable/configuracion"
-            android:title="@string/item_configuracion" />
-
+            android:title="@string/item_inicio"/>
         <item
             android:id="@+id/item_eventos"
-            android:icon="@drawable/configuracion"
-            android:title="@string/item_eventos" />
-
-        <item
-            android:id="@+id/item_pilotos"
-            android:icon="@drawable/ic_casco"
-            android:title="@string/item_pilotos" />
-
+            android:icon="@drawable/ic_calendario"
+            android:title="@string/item_calendario"/>
         <item
             android:id="@+id/item_campeonato"
-            android:icon="@drawable/ic_calendario"
-            android:title="@string/item_campeonato" />
-
+            android:icon="@drawable/ic_campeonato"
+            android:title="@string/item_campeonato"/>
+        <item
+            android:id="@+id/item_pilotos"
+            android:icon="@drawable/ic_piloto"
+            android:title="@string/item_pilotos"/>
         <item
             android:id="@+id/item_circuito"
-            android:icon="@drawable/ic_calendario"
-            android:title="@string/item_circuito" />
-
+            android:icon="@drawable/ic_circuito"
+            android:title="@string/item_circuito"/>
         <item
             android:id="@+id/item_carrera"
-            android:icon="@drawable/ic_calendario"
-            android:title="@string/item_carrera" />
-
-
+            android:icon="@drawable/ic_carrera2"
+            android:title="@string/item_carrera"/>
     </group>
-    
 </menu>

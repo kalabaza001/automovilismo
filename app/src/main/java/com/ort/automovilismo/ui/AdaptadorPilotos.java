@@ -1,12 +1,9 @@
 package com.ort.automovilismo.ui;
 
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,8 +14,6 @@ import com.ort.automovilismo.modelo.ImageLoader;
 import com.ort.automovilismo.modelo.Piloto;
 
 import java.util.List;
-
-import static com.ort.automovilismo.R.id.imageView;
 
 
 public class AdaptadorPilotos

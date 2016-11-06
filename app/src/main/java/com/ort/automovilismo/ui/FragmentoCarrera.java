@@ -19,6 +19,7 @@ import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Piloto;
 import com.ort.automovilismo.modelo.RowCampeonato;
 import com.ort.automovilismo.modelo.RowCarrera;
+import com.ort.automovilismo.modelo.Utils;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -69,9 +70,7 @@ public class FragmentoCarrera extends Fragment {
                 handler.post(new Runnable() {
                     public void run() {
                         try {
-                            //AsyncTaskParseJson jsonTask = new AsyncTaskParseJson();
-                            //jsonTask.execute();
-                            new GetDataTask(getActivity()).execute("http://10.0.2.2:8080/carrera/" + llamada);
+                            new GetDataTask(getActivity()).execute(Utils.getServidor() + "carrera/" + llamada);
                             llamada = llamada + 1;
                         } catch (Exception e) {
                             // error, do something
@@ -81,7 +80,7 @@ public class FragmentoCarrera extends Fragment {
             }
         };
 
-        timer.schedule(task, 0, 60*200);  // interval of one minute
+        timer.schedule(task, 0, 60 * 200);  // interval of one minute
 
     }
 
@@ -152,7 +151,7 @@ public class FragmentoCarrera extends Fragment {
                             JSONObject jsonObjectRowPasada = jsonArrayPasada.getJSONObject(j);
                             String posicion = jsonObjectRowPasada.getString("posicion");
                             String tiempo = jsonObjectRowPasada.getString("tiempo");
-                            if (!posicion.equals("1")){
+                            if (!posicion.equals("1")) {
                                 Date tiempoActual = simpleDateFormat.parse(tiempo);
                                 long millis = tiempoActual.getTime() - tiempoAnterior.getTime();
                                 sec = millis / 1000.000;
@@ -168,8 +167,8 @@ public class FragmentoCarrera extends Fragment {
                             int numero = jsonObjectPiloto.optInt("numero");
                             String marcaAuto = jsonObjectPiloto.optString("marcaAuto");
 
-                            Piloto piloto = new Piloto(nombre,apellido,numero,marcaAuto);
-                            RowCarrera rowCarrera = new RowCarrera(posicion,"0",tiempo,diferencia,piloto);
+                            Piloto piloto = new Piloto(nombre, apellido, numero, marcaAuto);
+                            RowCarrera rowCarrera = new RowCarrera(posicion, "0", tiempo, diferencia, piloto);
                             LRows.add(rowCarrera);
                         }
                     }

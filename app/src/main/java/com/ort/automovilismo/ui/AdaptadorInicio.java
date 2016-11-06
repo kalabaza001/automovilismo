@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Comida;
+import com.ort.automovilismo.modelo.ImagenInicio;
 
 /**
  * Adaptador para mostrar las comidas más pedidas en la sección "Inicio"
@@ -20,15 +21,15 @@ public class AdaptadorInicio
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // Campos respectivos de un item
-        public TextView nombre;
-        public TextView precio;
+        public TextView fechaImagen;
+        public TextView tituloImagen;
         public ImageView imagen;
 
         public ViewHolder(View v) {
             super(v);
-            nombre = (TextView) v.findViewById(R.id.nombre_comida);
-            precio = (TextView) v.findViewById(R.id.precio_comida);
-            imagen = (ImageView) v.findViewById(R.id.miniatura_comida);
+            fechaImagen = (TextView) v.findViewById(R.id.fecha_foto);
+            tituloImagen = (TextView) v.findViewById(R.id.titulo_foto);
+            imagen = (ImageView) v.findViewById(R.id.miniatura_foto_inicio);
         }
     }
 
@@ -37,7 +38,7 @@ public class AdaptadorInicio
 
     @Override
     public int getItemCount() {
-        return Comida.COMIDAS_POPULARES.size();
+        return ImagenInicio.IMAGENES_INICIO.size();
     }
 
     @Override
@@ -49,14 +50,14 @@ public class AdaptadorInicio
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        Comida item = Comida.COMIDAS_POPULARES.get(i);
+        ImagenInicio item = ImagenInicio.IMAGENES_INICIO.get(i);
 
         Glide.with(viewHolder.itemView.getContext())
                 .load(item.getIdDrawable())
                 .centerCrop()
                 .into(viewHolder.imagen);
-        viewHolder.nombre.setText(item.getNombre());
-        viewHolder.precio.setText("$" + item.getPrecio());
+        viewHolder.fechaImagen.setText(item.getDesc());
+        viewHolder.tituloImagen.setText(""+item.getTitulo());
 
     }
 

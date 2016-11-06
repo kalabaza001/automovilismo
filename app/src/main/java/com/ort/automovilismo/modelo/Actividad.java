@@ -2,10 +2,6 @@ package com.ort.automovilismo.modelo;
 
 import java.util.Date;
 
-/**
- * Created by Andres on 10/10/2016.
- */
-
 public class Actividad {
     private String titulo;
     private Date fechaIncio;

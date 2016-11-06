@@ -23,6 +23,7 @@ import com.ort.automovilismo.modelo.Actividad;
 import com.ort.automovilismo.modelo.Circuito;
 import com.ort.automovilismo.modelo.Evento;
 import com.ort.automovilismo.modelo.ResultadoEvento;
+import com.ort.automovilismo.modelo.Utils;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -56,7 +57,7 @@ public class FragmentoEventos extends Fragment {
         progressDiag = new ProgressDialog(getActivity());
         progressDiag.setMessage("loading");
         progressDiag.show();
-        new GetDataTask(getActivity()).execute("http://10.0.2.2:8080/eventos");
+        new GetDataTask(getActivity()).execute(Utils.getServidor() + "eventos");
         progressDiag.dismiss();
     }
 
