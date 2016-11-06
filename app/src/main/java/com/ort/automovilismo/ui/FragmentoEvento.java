@@ -1,46 +1,25 @@
 package com.ort.automovilismo.ui;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ort.automovilismo.R;
-import com.ort.automovilismo.modelo.Actividad;
-import com.ort.automovilismo.modelo.Circuito;
-import com.ort.automovilismo.modelo.Comida;
 import com.ort.automovilismo.modelo.Evento;
-import com.ort.automovilismo.modelo.Piloto;
-import com.ort.automovilismo.modelo.ResultadoEvento;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.Serializable;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.logging.Level;
 
 /**
  * Fragmento que representa el contenido de cada pestaña dentro de la sección "Categorías"

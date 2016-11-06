@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.ort.automovilismo.R;
-import com.ort.automovilismo.modelo.Comida;
 import com.ort.automovilismo.modelo.ImagenInicio;
 
 /**

@@ -3,15 +3,10 @@
 
     <string name="action_settings">Configuración</string>
     <string name="action_search">Buscar</string>
-    <string name="action_carrito">Añadir al carrito</string>
 
     <string name="item_inicio">Inicio</string>
-    <string name="item_cuenta">Mi Cuenta</string>
-    <string name="item_categorias">Categorías</string>
-    <string name="item_configuracion">Configuración</string>
     <string name="item_calendario">Calendario</string>
     <string name="item_pilotos">Pilotos</string>
-    <string name="item_eventos">Eventos</string>
     <string name="item_campeonato">Campeonato</string>
     <string name="item_circuito">Circuitos</string>
 
@@ -19,27 +14,8 @@
     <string name="titulo_fotos_recientes">Lo más reciente</string>
 
     <string name="titulo_pilotos">Pilotos</string>
-    <string name="titulo_campeonato">Campeonato</string>
-    <string name="titulo_circuitos">Circuitos</string>
-
-    <string name="titulo_tab_platillos">PLATILLOS</string>
-    <string name="titulo_tab_bebidas">BEBIDAS</string>
-    <string name="titulo_tab_postres">POSTRES</string>
-
-    <string name="titulo_tab_perfil">PERFIL</string>
-    <string name="titulo_tab_direcciones">DIRECCIONES</string>
-    <string name="titulo_tab_tarjetas">TARJETAS</string>
-
-    <string name="texto_no_tarjetas">No tienes ninguna tarjeta asociada</string>
-
-    <string name="etiqueta_carrito">Carrito</string>
-
-    <string name="texto_cambiar_contrasena">Cambia tu contraseña</string>
-    <string name="etiqueta_contrasena">Contraseña</string>
-    <string name="etiqueta_info_usuario">Información del usuario</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="curvas">Curvas:</string>
     <string name="longitud">Longitud:</string>
     <string name="pos">Pos</string>
