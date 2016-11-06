@@ -16,5 +16,6 @@
 
 
     <dimen name="ancho_logo">100dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 
 </resources>

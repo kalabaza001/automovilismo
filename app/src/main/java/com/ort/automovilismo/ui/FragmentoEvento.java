@@ -14,9 +14,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Actividad;
 import com.ort.automovilismo.modelo.Circuito;
@@ -43,7 +47,7 @@ import java.util.logging.Level;
  */
 public class FragmentoEvento extends Fragment {
 
-    private static final String INDICE_SECCION = "EventoElegido";
+    private static final String EVENTO = "Evento";
     private ArrayList<Evento> LEventos = new ArrayList<>();
     private ProgressDialog progressDiag;
     private RecyclerView reciclador;
@@ -51,10 +55,10 @@ public class FragmentoEvento extends Fragment {
     private AdaptadorEventos adaptador;
     //private ArrayList<Evento> LEventos = new ArrayList<Evento>();s
 
-    public static FragmentoEvento nuevaInstancia(int indiceSeccion) {
+    public static FragmentoEvento nuevaInstancia(Evento evento) {
         FragmentoEvento fragment = new FragmentoEvento();
         Bundle args = new Bundle();
-        args.putInt(INDICE_SECCION, indiceSeccion);
+        args.putSerializable(EVENTO,evento);
         fragment.setArguments(args);
         return fragment;
     }
@@ -76,50 +80,57 @@ public class FragmentoEvento extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        int indiceSeccion = getArguments().getInt(INDICE_SECCION);
-       // LEventos = (ArrayList<Evento>) getArguments().getSerializable("ListaEventos");
+        final Evento evento = (Evento) getArguments().getSerializable(EVENTO);
 
         //Elementos de la vista
-        TextView tituloEvento = (TextView) view.findViewById(R.id.titulo_evento);
-        TextView lugarEvento = (TextView) view.findViewById(R.id.lugar_evento);
+        TextView tituloEvento = (TextView) view.findViewById(R.id.evento_titulo);
+        TextView fechas = (TextView) view.findViewById(R.id.evento_fechas);
         TextView circuitoNombre = (TextView) view.findViewById(R.id.circuito_nombre);
         TextView circuitoNumero = (TextView) view.findViewById(R.id.circuito_numero);
+        TextView longitud = (TextView) view.findViewById(R.id.circuito_longitud);
+        TextView curvas = (TextView) view.findViewById(R.id.circuito_curvas);
+        ImageView circuitoMiniatura = (ImageView) view.findViewById(R.id.circuito_miniatura);
+        Button btnResultados = (Button) view.findViewById(R.id.btnResultados);
 
-        //Consumo servicio
-        progressDiag = new ProgressDialog(getActivity());
-        progressDiag.setMessage("loading");
-        progressDiag.show();
-        //new GetDataTask(getActivity()).execute("http://10.0.2.2:8080/eventos");
-        //SystemClock.sleep(2000);
 
+        tituloEvento.setText(evento.getTitulo());
+        fechas.setText(evento.getsFecha());
+        circuitoNombre.setText(evento.getCircuito().getNombre());
+        circuitoNumero.setText(evento.getCircuito().getNumero());
+        longitud.setText(String.valueOf(evento.getCircuito().getLongitud()));
+        curvas.setText(String.valueOf(evento.getCircuito().getCurvas()));
+        Glide.with(view.getContext())
+                // .load("http://superturismo.com.uy/wp-content/uploads/2015/10/rama-foto.jpg")
+                .load("http://www.baremos.uy:8000/images_pilotos/"+evento.getCircuito().getIdDrawable())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                // .placeholder(R.drawable.placeholder)
+                .error(R.drawable.auvo_error)
+                // .centerCrop()
+                .fitCenter()
+                .into(circuitoMiniatura);
+
+        //Cargo horarios
         reciclador = (RecyclerView) view.findViewById(R.id.reciclador);
-        layoutManager = new GridLayoutManager(getActivity(), 2);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         reciclador.setLayoutManager(layoutManager);
+        AdaptadorHorarios adapter = new AdaptadorHorarios(evento.getListaActividades());
+        reciclador.setAdapter(adapter);
+        btnResultados.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ResultadosFragment resultadosFragment = ResultadosFragment.newInstance(evento.getResultados());
+                getFragmentManager().beginTransaction().replace(R.id.contenedor_principal, resultadosFragment).addToBackStack("").commit();
+            }
+        });
 
 
-        reciclador.setAdapter(adaptador);
 
-        //obtengo el evento y cargo en el layout los datos del evento
-        switch (indiceSeccion) {
-            case 0:
-                //adaptador = new AdaptadorCategorias(Comida.PLATILLOS);
-                //adaptador = new AdaptadorEventos(LEventos,indiceSeccion);
-                //tituloEvento.setText(LEventos.get(indiceSeccion).getTitulo());
-                lugarEvento.setText("PINAR");
-                circuitoNombre.setText("BORRAT");
-                circuitoNumero.setText("Antihorario 6");
-                break;
-            case 1:
-                //adaptador = new AdaptadorCategorias(Comida.BEBIDAS);
-                //adaptador = new AdaptadorEventos(LEventos,indiceSeccion);
-                tituloEvento.setText("hola1");
-                break;
-            case 2:
-                //adaptador = new AdaptadorCategorias(Comida.POSTRES);
-                //adaptador = new AdaptadorEventos(LEventos,indiceSeccion);
-                tituloEvento.setText("Caca");
-                break;
-        }
+
+
     }
+
+
+
 
 }

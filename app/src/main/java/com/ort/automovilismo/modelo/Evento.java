@@ -2,6 +2,7 @@ package com.ort.automovilismo.modelo;
 
 import com.ort.automovilismo.R;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -9,14 +10,14 @@ import java.util.List;
 /**
  * Modelo de datos estático para alimentar la aplicación
  */
-public class Evento {
+public class Evento implements Serializable {
     private String idEvento;
     private String titulo;
     private Date fecha;
     private String sFecha;
     private Circuito circuito;
     private List<Actividad>listaActividades;
-    private List<ResultadoEvento>resultados;
+    private ArrayList<ResultadoEvento>resultados;
     //Cosas del circuito
 
     private int vueltas;
@@ -30,11 +31,11 @@ public class Evento {
         this.sFecha = sFecha;
     }
 
-    public List<ResultadoEvento> getResultados() {
+    public ArrayList<ResultadoEvento> getResultados() {
         return resultados;
     }
 
-    public void setResultados(List<ResultadoEvento> resultados) {
+    public void setResultados(ArrayList<ResultadoEvento> resultados) {
         this.resultados = resultados;
     }
 
@@ -95,7 +96,7 @@ public class Evento {
     }
 
     // New
-    public Evento(String titulo, Date fecha,List<ResultadoEvento>listaResultado) {
+    public Evento(String titulo, Date fecha,ArrayList<ResultadoEvento>listaResultado) {
         this.titulo = titulo;
         this.fecha = fecha;
         this.resultados = listaResultado;

@@ -13,7 +13,7 @@ import android.net.NetworkInfo;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class Utils {
+public class    Utils {
     public static void CopyStream(InputStream is, OutputStream os)
     {
         final int buffer_size=1024;

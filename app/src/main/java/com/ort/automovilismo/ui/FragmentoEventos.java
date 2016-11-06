@@ -44,10 +44,20 @@ public class FragmentoEventos extends Fragment {
     private AppBarLayout appBarLayout;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private ArrayList<Evento> LEventos = new ArrayList<Evento>();
+    private ArrayList<Evento> ListaEventos = new ArrayList<Evento>();
     private ProgressDialog progressDiag;
 
     public FragmentoEventos() {
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        progressDiag = new ProgressDialog(getActivity());
+        progressDiag.setMessage("loading");
+        progressDiag.show();
+        new GetDataTask(getActivity()).execute("http://10.0.2.2:8080/eventos");
+        progressDiag.dismiss();
     }
 
     @Override
@@ -59,10 +69,6 @@ public class FragmentoEventos extends Fragment {
             insertarTabs(container);
 
             // Setear adaptador al viewpager.
-            viewPager = (ViewPager) view.findViewById(R.id.pager);
-            poblarViewPager(viewPager);
-
-            tabLayout.setupWithViewPager(viewPager);
         }
 
         return view;
@@ -77,23 +83,22 @@ public class FragmentoEventos extends Fragment {
         appBarLayout.addView(tabLayout);
     }
 
-    private void poblarViewPager(ViewPager viewPager) {
+    private void poblarViewPager() {
+        viewPager = (ViewPager) getView().findViewById(R.id.pager);
+
         AdaptadorSecciones adapter = new AdaptadorSecciones(getFragmentManager());
-        for(int i=0;i<5;i++){
-            adapter.addFragment(FragmentoEvento.nuevaInstancia(i), "Fecha "+(i+1));
+        for(int i=0;i<ListaEventos.size();i++){
+            adapter.addFragment(FragmentoEvento.nuevaInstancia(ListaEventos.get(i)), (i+1) +"");
+
         }
         viewPager.setAdapter(adapter);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        progressDiag = new ProgressDialog(getActivity());
-        progressDiag.setMessage("loading");
-        progressDiag.show();
-        new GetDataTask(getActivity()).execute("http://10.0.2.2:8080/eventos");
-        progressDiag.dismiss();
     }
 
     @Override
@@ -223,12 +228,13 @@ public class FragmentoEventos extends Fragment {
                         Evento evento = new Evento(idEvento, titulo,  sFecha, circuito, listaActividad,listaResultado);
 
                         Log.d("Eventos:",evento.toString());
-                        LEventos.add(evento);
+                        ListaEventos.add(evento);
                     }
 
                 } catch (Exception ex) {
                     Log.e("ERROR", ex.getMessage());
                 }
+                poblarViewPager();
                 progressDiag.dismiss();
             }
 
