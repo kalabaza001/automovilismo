@@ -113,7 +113,6 @@ public class FragmentoCampeonato extends Fragment {
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObjectRowCampeonato = jsonArray.getJSONObject(i);
 
-
                         //Datos de puntaje
                         String idRowCampeonato = jsonObjectRowCampeonato.optString("_id");
                         int posicion = jsonObjectRowCampeonato.optInt("posicion");
@@ -146,9 +145,6 @@ public class FragmentoCampeonato extends Fragment {
 
                         Date ffNac = new Date();
                         Piloto piloto = new Piloto(idPiloto, nombre, apellido, ffNac, numero, marcaAuto, equipo, nacionalidad, puntos, podios, campeonatos, idDrawable);
-                        //Log.d("piloto:", piloto.getNombre() + " " + piloto.getApellido());
-                        //Log.d("pos: ", Integer.toString(posicion) + "_" + primerFecha + "_" + segundaFecha);
-
                         RowCampeonato rowCampeonato = new RowCampeonato(idRowCampeonato, posicion, piloto,primerFecha,segundaFecha,terceraFecha,cuartaFecha,quintaFecha,sextaFecha,septimaFecha, octavaFecha, novenaFecha,decimaFecha);
 
                         LRows.add(rowCampeonato);
