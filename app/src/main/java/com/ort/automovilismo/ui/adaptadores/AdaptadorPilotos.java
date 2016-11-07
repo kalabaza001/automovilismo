@@ -28,7 +28,6 @@ public class AdaptadorPilotos
         public ImageView imagenPiloto;
         public TextView marcaAuto;
 
-
         public ViewHolder(View v) {
             super(v);
             numero = (TextView) v.findViewById(R.id.numero_pilotos);
@@ -58,11 +57,9 @@ public class AdaptadorPilotos
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         Piloto item = listadoPiloto.get(i);
-        String urlImage = Utils.getServidor() + "/images_pilotos/" + item.getIdDrawable() + ".jpg";
-        Log.d("URL IMAGEN PILOTO: ", urlImage);
+        String urlImage = Utils.getServidor() + "images_pilotos/" + item.getIdDrawable() + ".jpg";
 
         Glide.with(viewHolder.itemView.getContext())
-                //.load("http://www.baremos.uy:8000/images_pilotos/alejandro_borio.jpg")
                 .load(urlImage)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                // .placeholder(R.drawable.placeholder)
@@ -75,6 +72,5 @@ public class AdaptadorPilotos
         viewHolder.nombre.setText(item.getNombre() + " " + item.getApellido());
         viewHolder.numero.setText(Integer.toString(item.getNumero()));
         viewHolder.marcaAuto.setText(item.getMarcaAuto());
-
     }
 }
