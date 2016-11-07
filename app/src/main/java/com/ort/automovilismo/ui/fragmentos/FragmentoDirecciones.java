@@ -1,4 +1,4 @@
-package com.ort.automovilismo.ui;
+package com.ort.automovilismo.ui.fragmentos;
 
 
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ort.automovilismo.R;
+import com.ort.automovilismo.ui.DecoracionLineaDivisoria;
+import com.ort.automovilismo.ui.adaptadores.AdaptadorDirecciones;
 
 
 /**

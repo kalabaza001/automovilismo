@@ -1,6 +1,5 @@
 package com.ort.automovilismo.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -13,7 +12,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.ort.automovilismo.R;
-import com.ort.automovilismo.modelo.Utils;
+import com.ort.automovilismo.ui.fragmentos.FragmentoCampeonato;
+import com.ort.automovilismo.ui.fragmentos.FragmentoCarrera;
+import com.ort.automovilismo.ui.fragmentos.FragmentoCircuitos;
+import com.ort.automovilismo.ui.fragmentos.FragmentoEventos;
+import com.ort.automovilismo.ui.fragmentos.FragmentoInicio;
+import com.ort.automovilismo.ui.fragmentos.FragmentoPilotos;
 
 public class ActividadPrincipal extends AppCompatActivity {
 

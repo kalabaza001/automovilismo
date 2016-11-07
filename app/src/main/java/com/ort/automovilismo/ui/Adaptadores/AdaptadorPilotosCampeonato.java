@@ -1,4 +1,4 @@
-package com.ort.automovilismo.ui;
+package com.ort.automovilismo.ui.adaptadores;
 
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;

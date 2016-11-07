@@ -1,4 +1,4 @@
-package com.ort.automovilismo.ui;
+package com.ort.automovilismo.ui.adaptadores;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ort.automovilismo.R;
-import com.ort.automovilismo.modelo.RowCampeonato;
 import com.ort.automovilismo.modelo.RowCarrera;
+import com.ort.automovilismo.ui.RecyclerClickListener;
 
 import java.util.List;
 

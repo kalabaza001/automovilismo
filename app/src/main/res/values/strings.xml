@@ -25,5 +25,7 @@
     <string name="item_carrera">Carrera</string>
     <string name="num">N°</string>
     <string name="resultados">Resultados</string>
+    <string name="Fecha">Fecha</string>
+    <string name="Puntos">Puntos</string>
 
 </resources>

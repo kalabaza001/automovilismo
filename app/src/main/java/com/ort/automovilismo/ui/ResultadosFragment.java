@@ -1,10 +1,8 @@
 package com.ort.automovilismo.ui;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,9 +11,9 @@ import android.view.ViewGroup;
 
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.ResultadoEvento;
+import com.ort.automovilismo.ui.adaptadores.AdaptadorResultados;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A fragment representing a list of Items.

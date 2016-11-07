@@ -1,4 +1,4 @@
-package com.ort.automovilismo.ui;
+package com.ort.automovilismo.ui.fragmentos;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -17,9 +16,10 @@ import android.view.ViewGroup;
 
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Piloto;
-import com.ort.automovilismo.modelo.RowCampeonato;
 import com.ort.automovilismo.modelo.RowCarrera;
 import com.ort.automovilismo.modelo.Utils;
+import com.ort.automovilismo.ui.RecyclerClickListener;
+import com.ort.automovilismo.ui.adaptadores.AdaptadorCarrera;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

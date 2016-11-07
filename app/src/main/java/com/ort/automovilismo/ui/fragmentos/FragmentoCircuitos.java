@@ -1,8 +1,7 @@
-package com.ort.automovilismo.ui;
+package com.ort.automovilismo.ui.fragmentos;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,8 +17,9 @@ import android.widget.Button;
 
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Circuito;
-import com.ort.automovilismo.modelo.RowCampeonato;
 import com.ort.automovilismo.modelo.Utils;
+import com.ort.automovilismo.ui.RecyclerClickListener;
+import com.ort.automovilismo.ui.adaptadores.AdaptadorCircuito;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

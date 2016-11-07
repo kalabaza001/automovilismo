@@ -1,4 +1,4 @@
-package com.ort.automovilismo.ui;
+package com.ort.automovilismo.ui.fragmentos;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -36,11 +36,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-
-/**
- * Fragmento que contiene otros fragmentos anidados para representar las categorías
- * de comidas
- */
 public class FragmentoEventos extends Fragment {
     private AppBarLayout appBarLayout;
     private TabLayout tabLayout;
@@ -88,8 +83,8 @@ public class FragmentoEventos extends Fragment {
         viewPager = (ViewPager) getView().findViewById(R.id.pager);
 
         AdaptadorSecciones adapter = new AdaptadorSecciones(getFragmentManager());
-        for(int i=0;i<ListaEventos.size();i++){
-            adapter.addFragment(FragmentoEvento.nuevaInstancia(ListaEventos.get(i)), (i+1) +"");
+        for (int i = 0; i < ListaEventos.size(); i++) {
+            adapter.addFragment(FragmentoEvento.nuevaInstancia(ListaEventos.get(i)), (i + 1) + "");
 
         }
         viewPager.setAdapter(adapter);
@@ -202,7 +197,7 @@ public class FragmentoEventos extends Fragment {
                         String recordCircuito = jsonObjectCitcuito.optString("record");
                         String historiaCircuito = jsonObjectCitcuito.optString("historia");
                         String idDrawableCircuito = jsonObjectCitcuito.optString("idDrawable");
-                        Circuito circuito = new Circuito(nombreCircuito, numeroCircuito, longitudCircuito,curvasCircuito, recordCircuito, historiaCircuito, idDrawableCircuito);
+                        Circuito circuito = new Circuito(nombreCircuito, numeroCircuito, longitudCircuito, curvasCircuito, recordCircuito, historiaCircuito, idDrawableCircuito);
 
                         //Obtengo las actividades
                         ArrayList<Actividad> listaActividad = new ArrayList<Actividad>();
@@ -211,24 +206,24 @@ public class FragmentoEventos extends Fragment {
                             JSONObject jsonObjectActividad = jsonArrayActividad.getJSONObject(j);
                             String tituloAct = jsonObjectActividad.optString("actividad");
                             String horaDH = jsonObjectActividad.optString("hora");
-                            Actividad actividad = new Actividad(tituloAct,horaDH);
+                            Actividad actividad = new Actividad(tituloAct, horaDH);
                             listaActividad.add(actividad);
                         }
 
                         //Obtengo los resultados (Tener cuidado que el orden de los resultados es el orden de posicion OJO)
                         ArrayList<ResultadoEvento> listaResultado = new ArrayList<ResultadoEvento>();
                         JSONArray jsonArrayResultados = jsonObjectEvento.getJSONArray("resultadosCarrera");
-                        for (int b = 0; b <jsonArrayResultados.length(); b++){
+                        for (int b = 0; b < jsonArrayResultados.length(); b++) {
                             JSONObject jsonObjectResultado = jsonArrayResultados.getJSONObject(b);
                             int pos = b + 1;
                             int numero = jsonObjectResultado.optInt("numero");
                             String nombrePiloto = jsonObjectResultado.optString("nombre");
-                            ResultadoEvento resultado = new ResultadoEvento(pos,numero,nombrePiloto);
+                            ResultadoEvento resultado = new ResultadoEvento(pos, numero, nombrePiloto);
                             listaResultado.add(resultado);
                         }
-                        Evento evento = new Evento(idEvento, titulo,  sFecha, circuito, listaActividad,listaResultado);
+                        Evento evento = new Evento(idEvento, titulo, sFecha, circuito, listaActividad, listaResultado);
 
-                        Log.d("Eventos:",evento.toString());
+                        Log.d("Eventos:", evento.toString());
                         ListaEventos.add(evento);
                     }
 

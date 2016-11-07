@@ -1,4 +1,4 @@
-package com.ort.automovilismo.ui;
+package com.ort.automovilismo.ui.fragmentos;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -18,6 +18,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Evento;
+import com.ort.automovilismo.ui.ResultadosFragment;
+import com.ort.automovilismo.ui.adaptadores.AdaptadorEventos;
+import com.ort.automovilismo.ui.adaptadores.AdaptadorHorarios;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.ort.automovilismo.ui;
+package com.ort.automovilismo.ui.fragmentos;
 
 import android.Manifest;
 import android.content.Context;
@@ -33,6 +33,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Utils;
+import com.ort.automovilismo.ui.DataParser;
 
 import org.json.JSONObject;
 

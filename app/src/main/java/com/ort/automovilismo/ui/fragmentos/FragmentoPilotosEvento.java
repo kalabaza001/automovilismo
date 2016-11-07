@@ -1,4 +1,4 @@
-package com.ort.automovilismo.ui;
+package com.ort.automovilismo.ui.fragmentos;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Piloto;
+import com.ort.automovilismo.ui.adaptadores.AdaptadorPilotos;
 
 import java.util.List;
 

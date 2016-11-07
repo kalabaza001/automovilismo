@@ -1,17 +1,14 @@
-package com.ort.automovilismo.ui;
+package com.ort.automovilismo.ui.adaptadores;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.ort.automovilismo.R;
-import com.ort.automovilismo.modelo.Piloto;
 import com.ort.automovilismo.modelo.RowCampeonato;
+import com.ort.automovilismo.ui.RecyclerClickListener;
 
 import java.util.List;
 
