@@ -24,9 +24,12 @@
                 android:id="@+id/nombre_pilotos_campeonato"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingBottom="16dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="8dp"
                 android:paddingLeft="16dp"
                 android:text="Nombre"
+                android:textSize="23sp"
+                android:textStyle="bold"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textColor="@android:color/black" />
 
@@ -125,15 +128,6 @@
 
             </android.support.v7.widget.LinearLayoutCompat>
 
-            <ImageView
-                android:id="@+id/imageViewSeparator"
-                android:layout_width="match_parent"
-                android:layout_below="@+id/primer_fecha_campeonato"
-                android:layout_height="wrap_content"
-                android:src="@android:drawable/divider_horizontal_dim_dark"
-                android:scaleType="fitXY"/>
-
-
             <android.support.v7.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -158,8 +152,21 @@
                     android:paddingBottom="8dp"
                     android:paddingLeft="5dp"
                     android:text="10"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
                     android:textColor="@android:color/black" />
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e0e0e0"
+                    android:id="@+id/view3" />
+
             </android.support.v7.widget.LinearLayoutCompat>
 
             <android.support.v7.widget.LinearLayoutCompat
@@ -185,8 +192,21 @@
                     android:paddingBottom="8dp"
                     android:paddingLeft="5dp"
                     android:text="10"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
                     android:textColor="@android:color/black" />
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e0e0e0"
+                    android:id="@+id/view4" />
+
             </android.support.v7.widget.LinearLayoutCompat>
 
             <android.support.v7.widget.LinearLayoutCompat
@@ -212,10 +232,22 @@
                     android:paddingBottom="8dp"
                     android:paddingLeft="5dp"
                     android:text="10"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
                     android:textColor="@android:color/black" />
             </android.support.v7.widget.LinearLayoutCompat>
 
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e0e0e0"
+                    android:id="@+id/view5" />
+
+            </android.support.v7.widget.LinearLayoutCompat>
 
             <android.support.v7.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
@@ -240,8 +272,21 @@
                     android:paddingBottom="8dp"
                     android:paddingLeft="5dp"
                     android:text="10"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
                     android:textColor="@android:color/black" />
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e0e0e0"
+                    android:id="@+id/view6" />
+
             </android.support.v7.widget.LinearLayoutCompat>
 
             <android.support.v7.widget.LinearLayoutCompat
@@ -267,10 +312,22 @@
                     android:paddingBottom="8dp"
                     android:paddingLeft="5dp"
                     android:text="10"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
                     android:textColor="@android:color/black" />
             </android.support.v7.widget.LinearLayoutCompat>
 
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e0e0e0"
+                    android:id="@+id/view7" />
+
+            </android.support.v7.widget.LinearLayoutCompat>
 
             <android.support.v7.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
@@ -295,8 +352,21 @@
                     android:paddingBottom="8dp"
                     android:paddingLeft="5dp"
                     android:text="10"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
                     android:textColor="@android:color/black" />
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e0e0e0"
+                    android:id="@+id/view8" />
+
             </android.support.v7.widget.LinearLayoutCompat>
 
             <android.support.v7.widget.LinearLayoutCompat
@@ -322,8 +392,21 @@
                     android:paddingBottom="8dp"
                     android:paddingLeft="5dp"
                     android:text="10"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
                     android:textColor="@android:color/black" />
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e0e0e0"
+                    android:id="@+id/view9" />
+
             </android.support.v7.widget.LinearLayoutCompat>
 
             <android.support.v7.widget.LinearLayoutCompat
@@ -349,8 +432,21 @@
                     android:paddingBottom="8dp"
                     android:paddingLeft="5dp"
                     android:text="10"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
                     android:textColor="@android:color/black" />
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e0e0e0"
+                    android:id="@+id/view10" />
+
             </android.support.v7.widget.LinearLayoutCompat>
 
             <android.support.v7.widget.LinearLayoutCompat
@@ -375,8 +471,8 @@
                     android:layout_height="wrap_content"
                     android:paddingBottom="8dp"
                     android:paddingLeft="5dp"
-                    android:text="101"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:text="10"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
                     android:textColor="@android:color/black" />
             </android.support.v7.widget.LinearLayoutCompat>
 
@@ -403,6 +499,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingBottom="8dp"
+                    android:paddingRight="45dp"
                     android:paddingLeft="16dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
                     android:textColor="@android:color/black"
