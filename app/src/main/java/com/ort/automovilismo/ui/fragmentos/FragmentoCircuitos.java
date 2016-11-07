@@ -148,7 +148,6 @@ public class FragmentoCircuitos extends Fragment {
                         FragmentoCircuito newFragment = new FragmentoCircuito();
                         Bundle args = new Bundle();
                        //Paso los datos al otro fragment
-                        Log.d("ANTES DE MANDAR: ", String.valueOf(position));
                         Circuito circuito = adaptador.getListaCircuitos().get(position);
                         args.putSerializable(FragmentoCircuito.CIRCUITO, circuito);
                         newFragment.setArguments(args);
@@ -162,9 +161,6 @@ public class FragmentoCircuitos extends Fragment {
 
                         // Commit the transaction
                         transaction.commit();
-
-                        //   Toast.makeText(getContext(), adaptador.getRowCampeonatoList().get(position).getPosicion()+"", Toast.LENGTH_LONG).show();
-                        //Toast.makeText(getContext(), adaptador.getRowCampeonatoList().get(position).getPosicion() + " - " + adaptador.getRowCampeonatoList().get(position).getPiloto().getApellido(), Toast.LENGTH_LONG).show();
 
                       //  Intent intent = new Intent(getActivity(), ActividadPrincipal.class);
                       //  startActivity(intent);

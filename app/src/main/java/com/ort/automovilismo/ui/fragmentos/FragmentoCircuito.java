@@ -66,8 +66,6 @@ public class FragmentoCircuito extends Fragment {
         Bundle args = getArguments();
         mCircuito = (Circuito) args.getSerializable(CIRCUITO);
 
-
-
         View view = inflater.inflate(R.layout.fragmento_circuito, container, false);
 
         circuito_nombre = (TextView) view.findViewById(R.id.circuito_nombre);
@@ -82,8 +80,7 @@ public class FragmentoCircuito extends Fragment {
         circuito_curvas.setText(String.valueOf(mCircuito.getCurvas()).toString());
 
         Glide.with(view.getContext())
-                // .load("http://superturismo.com.uy/wp-content/uploads/2015/10/rama-foto.jpg")
-                .load("http://www.baremos.uy:8000/images_pilotos/"+mCircuito.getIdDrawable())
+                .load(Utils.getServidor() + mCircuito.getIdDrawable() + ".jpg")
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 // .placeholder(R.drawable.placeholder)
                 .error(R.drawable.auvo_error)
@@ -94,9 +91,6 @@ public class FragmentoCircuito extends Fragment {
         mBotonIr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
                     Intent intent;
                     if(Utils.isOnline(getActivity())){
                         intent = new Intent(getActivity(),MapsActivity.class);
@@ -115,11 +109,6 @@ public class FragmentoCircuito extends Fragment {
         });
         return view;
     }
-
-
-
-
-
 }
 
 

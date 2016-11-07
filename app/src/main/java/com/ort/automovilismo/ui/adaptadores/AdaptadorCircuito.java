@@ -1,6 +1,7 @@
 package com.ort.automovilismo.ui.adaptadores;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Circuito;
+import com.ort.automovilismo.modelo.Utils;
 import com.ort.automovilismo.ui.RecyclerClickListener;
 
 import java.util.List;
@@ -55,10 +57,11 @@ public class AdaptadorCircuito
         viewHolder.numero.setText(item.getNumero());
         //viewHolder.longitud.setText(String.valueOf(item.getLongitud()));
        // viewHolder.curvas.setText(String.valueOf(item.getCurvas()));
-
+        String urlImage = Utils.getServidor() + "images_pilotos/" + item.getIdDrawable() + ".jpg";
+        Log.d("IMAGEN CIRCUITO: ", urlImage);
 
         Glide.with(viewHolder.itemView.getContext())
-                .load("http://www.auvo.com.uy/wp-content/uploads/2016/08/circuitoN3-fondo.jpg")
+                .load(urlImage)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .error(R.drawable.auvo_error)
                 // .centerCrop()
@@ -100,8 +103,6 @@ public class AdaptadorCircuito
                     listener.onItemClick(view, getLayoutPosition());
                 }
             });
-            //primeraF = (TextView) v.findViewById(R.id.camp_1f);
-            //segundaF = (TextView) v.findViewById(R.id.camp_2f);
         }
     }
 
