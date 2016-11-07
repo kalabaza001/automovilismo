@@ -1,6 +1,7 @@
 package com.ort.automovilismo.ui.adaptadores;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Piloto;
+import com.ort.automovilismo.modelo.Utils;
 
 import java.util.List;
 
@@ -56,9 +58,12 @@ public class AdaptadorPilotos
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         Piloto item = listadoPiloto.get(i);
+        String urlImage = Utils.getServidor() + "/images_pilotos/" + item.getIdDrawable() + ".jpg";
+        Log.d("URL IMAGEN PILOTO: ", urlImage);
 
         Glide.with(viewHolder.itemView.getContext())
-                .load("http://www.baremos.uy:8000/images_pilotos/alejandro_borio.jpg")
+                //.load("http://www.baremos.uy:8000/images_pilotos/alejandro_borio.jpg")
+                .load(urlImage)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                // .placeholder(R.drawable.placeholder)
                 //.error(R.drawable.auvo_error)
