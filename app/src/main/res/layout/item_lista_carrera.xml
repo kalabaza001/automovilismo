@@ -15,33 +15,32 @@
 
                 <TextView
                     android:id="@+id/carrera_pos"
-                    android:layout_width="wrap_content"
+                    android:layout_width="25dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:paddingBottom="8dp"
-                    android:paddingLeft="5dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
                     android:textColor="@android:color/black"
                     android:text="Pos" />
 
                 <TextView
                     android:id="@+id/carrera_piloto_num"
-                    android:layout_width="wrap_content"
+                    android:layout_width="35dp"
                     android:layout_height="wrap_content"
                     android:paddingBottom="8dp"
                     android:paddingLeft="5dp"
                     android:text="25"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
                     android:textColor="@android:color/black" />
-
 
                 <TextView
                     android:id="@+id/carrera_piloto_nom"
-                    android:layout_width="wrap_content"
+                    android:layout_width="125dp"
                     android:layout_height="wrap_content"
                     android:paddingBottom="8dp"
                     android:paddingLeft="5dp"
-                    android:text="Wilfredo Pomes "
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:text="Wilfredo Pomes"
+                    android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
                     android:textColor="@android:color/black" />
 
                 <TextView
@@ -49,9 +48,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingBottom="8dp"
-                    android:paddingLeft="5dp"
+                    android:paddingLeft="10dp"
                     android:text="1:28.413"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
                     android:textColor="@android:color/black" />
 
                 <TextView
@@ -59,10 +58,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingBottom="8dp"
-                    android:paddingLeft="5dp"
+                    android:paddingLeft="35dp"
                     android:text="2.258"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:gravity="right"
+                    android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
                     android:textColor="@android:color/black" />
             </android.support.v7.widget.LinearLayoutCompat>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e0e0e0"
+                android:id="@+id/view" />
         </LinearLayout>
     </LinearLayout>
