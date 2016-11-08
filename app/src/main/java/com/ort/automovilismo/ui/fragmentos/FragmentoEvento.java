@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Evento;
+import com.ort.automovilismo.modelo.Utils;
 import com.ort.automovilismo.ui.ResultadosFragment;
 import com.ort.automovilismo.ui.adaptadores.AdaptadorEventos;
 import com.ort.automovilismo.ui.adaptadores.AdaptadorHorarios;
@@ -81,15 +83,18 @@ public class FragmentoEvento extends Fragment {
         circuitoNumero.setText(evento.getCircuito().getNumero());
         longitud.setText(String.valueOf(evento.getCircuito().getLongitud()));
         curvas.setText(String.valueOf(evento.getCircuito().getCurvas()));
+        //String urlImage = Utils.getServidor() + "images_pilotos/" + evento.getCircuito().getIdDrawable() + ".jpg";
+        String urlImage = "http://www.baremos.uy:8000/images_pilotos/" + evento.getCircuito().getIdDrawable() + ".jpg";
+        Log.d("CIRCUITOU: ", urlImage);
         Glide.with(view.getContext())
-                // .load("http://superturismo.com.uy/wp-content/uploads/2015/10/rama-foto.jpg")
-                .load("http://www.baremos.uy:8000/images_pilotos/"+evento.getCircuito().getIdDrawable())
+                .load(urlImage)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 // .placeholder(R.drawable.placeholder)
                 .error(R.drawable.auvo_error)
                 // .centerCrop()
                 .fitCenter()
                 .into(circuitoMiniatura);
+
 
         //Cargo horarios
         reciclador = (RecyclerView) view.findViewById(R.id.reciclador);
@@ -105,14 +110,5 @@ public class FragmentoEvento extends Fragment {
                 getFragmentManager().beginTransaction().replace(R.id.contenedor_principal, resultadosFragment).addToBackStack("").commit();
             }
         });
-
-
-
-
-
     }
-
-
-
-
 }
