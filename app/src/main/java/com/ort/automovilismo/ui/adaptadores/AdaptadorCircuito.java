@@ -58,8 +58,6 @@ public class AdaptadorCircuito
         //viewHolder.longitud.setText(String.valueOf(item.getLongitud()));
        // viewHolder.curvas.setText(String.valueOf(item.getCurvas()));
         String urlImage = Utils.getServidor() + "images_pilotos/" + item.getIdDrawable() + ".jpg";
-        Log.d("IMAGEN CIRCUITO: ", urlImage);
-
         Glide.with(viewHolder.itemView.getContext())
                 .load(urlImage)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)

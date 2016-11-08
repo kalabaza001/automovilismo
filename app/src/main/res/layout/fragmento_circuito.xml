@@ -14,21 +14,30 @@
         android:id="@+id/circuito_nombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingTop="10dp"
         android:paddingBottom="16dp"
         android:paddingLeft="16dp"
         android:text="nombre"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textColor="@android:color/black" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e0e0e0"
+        android:id="@+id/view3" />
+
+
     <TextView
         android:id="@+id/circuito_numero"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left|bottom"
+        android:paddingTop="6dp"
         android:paddingBottom="16dp"
         android:paddingLeft="16dp"
         android:text="numero"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
         android:textColor="@android:color/black" />
 
     <android.support.v7.widget.LinearLayoutCompat
@@ -41,7 +50,7 @@
             android:layout_height="wrap_content"
             android:paddingBottom="16dp"
             android:paddingLeft="16dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
             android:textColor="@android:color/black"
             android:text="@string/longitud"/>
 
@@ -53,7 +62,7 @@
             android:paddingBottom="16dp"
             android:paddingLeft="5dp"
             android:text="Longitud"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
             android:textColor="@android:color/black" />
 
         <TextView
@@ -64,7 +73,7 @@
             android:paddingLeft="5dp"
             android:layout_toRightOf="@+id/circuito_largo"
             android:text="Mts"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
             android:textColor="@android:color/black" />
 
     </android.support.v7.widget.LinearLayoutCompat>
@@ -79,7 +88,7 @@
             android:layout_height="wrap_content"
             android:paddingBottom="8dp"
             android:paddingLeft="16dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
             android:textColor="@android:color/black"
             android:text="@string/curvas"
             android:id="@+id/circuito_curvas_text" />
@@ -91,7 +100,7 @@
             android:paddingBottom="8dp"
             android:paddingLeft="5dp"
             android:text="10"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
             android:textColor="@android:color/black" />
 
     </android.support.v7.widget.LinearLayoutCompat>
@@ -99,7 +108,7 @@
 
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ir"
         android:id="@+id/btnIr"

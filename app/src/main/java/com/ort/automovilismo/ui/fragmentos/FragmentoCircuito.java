@@ -79,8 +79,11 @@ public class FragmentoCircuito extends Fragment {
         circuito_largo.setText(String.valueOf(mCircuito.getLargo()).toString());
         circuito_curvas.setText(String.valueOf(mCircuito.getCurvas()).toString());
 
+        String urlImage = Utils.getServidor() + "images_pilotos/"+mCircuito.getIdDrawable() + ".jpg";
+        Log.d("Imagen ci: ", urlImage);
+
         Glide.with(view.getContext())
-                .load(Utils.getServidor() + mCircuito.getIdDrawable() + ".jpg")
+                .load(urlImage)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 // .placeholder(R.drawable.placeholder)
                 .error(R.drawable.auvo_error)
