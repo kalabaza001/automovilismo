@@ -1,13 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/list"
-    android:name="com.ort.automovilismo.ui.ResultadosFragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    app:layoutManager="LinearLayoutManager"
-    tools:context="com.ort.automovilismo.ui.ResultadosFragment"
-    tools:listitem="@layout/fragment_resultados" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <TextView
+    android:id="@+id/textView1"
+    android:layout_width="75dp"
+    android:layout_height="wrap_content"
+    android:background="@color/background_header_seccion_pilotos"
+    android:gravity="center"
+    android:padding="8dp"
+    android:paddingLeft="2dp"
+    android:text="@string/pos"
+    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+    android:textColor="@color/color_light" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_header_seccion_pilotos"
+        android:gravity="left"
+        android:padding="8dp"
+        android:text="@string/piloto"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/color_light"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/textView3"
+        android:layout_toEndOf="@+id/textView3"/>
+
+    <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/list"
+        android:layout_below="@+id/textView4"
+        android:name="com.ort.automovilismo.ui.ResultadosFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:layoutManager="LinearLayoutManager"
+        tools:context="com.ort.automovilismo.ui.ResultadosFragment"
+        tools:listitem="@layout/fragment_resultados" />
+
+    <TextView
+    android:id="@+id/textView3"
+    android:layout_width="59dp"
+    android:layout_height="wrap_content"
+    android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+    android:background="@color/background_header_seccion_pilotos"
+    android:gravity="center"
+    android:text="@string/num"
+    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+    android:textColor="@color/color_light"
+    android:layout_alignParentTop="true"
+    android:layout_toRightOf="@+id/textView1"
+    android:layout_toEndOf="@+id/textView1" />
+
+</RelativeLayout>
