@@ -110,6 +110,12 @@
         android:text="Ir"
         android:id="@+id/btnIr"
         android:onClick="ir"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/selector"
+        android:enabled="true"
         android:layout_gravity="right"
         />
 
