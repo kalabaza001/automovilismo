@@ -21,7 +21,6 @@ import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Evento;
 import com.ort.automovilismo.modelo.Utils;
 import com.ort.automovilismo.ui.ResultadosFragment;
-import com.ort.automovilismo.ui.adaptadores.AdaptadorEventos;
 import com.ort.automovilismo.ui.adaptadores.AdaptadorHorarios;
 
 import java.util.ArrayList;
@@ -36,7 +35,6 @@ public class FragmentoEvento extends Fragment {
     private ProgressDialog progressDiag;
     private RecyclerView reciclador;
     private GridLayoutManager layoutManager;
-    private AdaptadorEventos adaptador;
     //private ArrayList<Evento> LEventos = new ArrayList<Evento>();s
 
     public static FragmentoEvento nuevaInstancia(Evento evento) {
@@ -108,6 +106,7 @@ public class FragmentoEvento extends Fragment {
             public void onClick(View view) {
                 ResultadosFragment resultadosFragment = ResultadosFragment.newInstance(evento.getResultados());
                 getFragmentManager().beginTransaction().replace(R.id.contenedor_principal, resultadosFragment).addToBackStack("").commit();
+                //getFragmentManager().beginTransaction().add(R.id.contenedor_principal,resultadosFragment).addToBackStack("").commit();
             }
         });
     }
