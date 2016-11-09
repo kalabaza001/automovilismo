@@ -94,6 +94,7 @@ public class ActividadPrincipal extends AppCompatActivity {
             fragmentManager
                     .beginTransaction()
                     .replace(R.id.contenedor_principal, fragmentoGenerico)
+                    .addToBackStack(null)
                     .commit();
         }
 
@@ -115,5 +116,14 @@ public class ActividadPrincipal extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() > 0 ){
+            getFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
     }
 }
