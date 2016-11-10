@@ -77,9 +77,9 @@ public class AdaptadorPilotosCampeonato
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         RowCampeonato item = listadoRow.get(i);
         Log.d("Adapter ", item.toString());
-        String urlImage = Utils.getServidor() + "images_pilotos/" + item.getPiloto().getIdDrawable() + ".jpg";
+        String urlImg = Utils.getServidor() + "images_pilotos/" + item.getPiloto().getIdDrawable() + ".jpg";
         Glide.with(viewHolder.itemView.getContext())
-                .load(urlImage)
+                .load(urlImg)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .error(R.drawable.auvo_error)
                 .fitCenter()
