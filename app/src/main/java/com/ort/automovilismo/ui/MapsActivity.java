@@ -155,8 +155,10 @@ public class MapsActivity extends AppCompatActivity
         map.addMarker(new MarkerOptions()
                 .position(circuito)
                 .title("Circuito")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.finish))
         );
-        map.addMarker(new MarkerOptions()
+
+               map.addMarker(new MarkerOptions()
                 .position(aqui)
                 .title("Actual")
         );

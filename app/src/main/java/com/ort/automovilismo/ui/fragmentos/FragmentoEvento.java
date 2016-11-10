@@ -28,6 +28,8 @@ import com.ort.automovilismo.ui.adaptadores.AdaptadorHorarios;
 import org.json.JSONException;
 import java.util.ArrayList;
 
+import static com.ort.automovilismo.R.id.condIcon;
+
 public class FragmentoEvento extends Fragment {
 
     private static final String EVENTO = "Evento";
@@ -44,7 +46,9 @@ public class FragmentoEvento extends Fragment {
     private TextView windDeg;
     private TextView hum;
     private ImageView imgView;
-    String city = "Montevideo,UY";
+    private String imagen;
+
+    private static String IMG_URL = "http://openweathermap.org/img/w/";
     // FIN-CLIMA***************** //
 
     public static FragmentoEvento nuevaInstancia(Evento evento) {
@@ -59,6 +63,7 @@ public class FragmentoEvento extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragmento_eventos, container, false);
+
         return view;
     }
 
@@ -93,8 +98,16 @@ public class FragmentoEvento extends Fragment {
         windDeg = (TextView) view.findViewById(R.id.windDeg);
         imgView = (ImageView) view.findViewById(R.id.condIcon);
 
+        String auxLatitud=evento.getCircuito().getLatitud()+"";
+        auxLatitud=auxLatitud.substring(0,2);
+        // imprimir latitud
+        String auxLongitud=evento.getCircuito().getLongitud()+"";
+        auxLongitud=auxLongitud.substring(0,2);
+        // imprimir longitud
         JSONWeatherTask task = new JSONWeatherTask();
-        task.execute(new String[]{city});
+        String ubicacion="lat="+auxLatitud+"&lon="+auxLongitud;
+       // task.execute(new String[]{city});
+        task.execute(new String[]{ubicacion});
         // FIN-CLIMA***************** //
 
         tituloEvento.setText(evento.getTitulo());
@@ -111,7 +124,12 @@ public class FragmentoEvento extends Fragment {
                 .error(R.drawable.auvo_error)
                 .fitCenter()
                 .into(circuitoMiniatura);
-
+        while(imagen==null);
+        Glide.with(view.getContext())
+                .load(IMG_URL + imagen.toString() + ".png")
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .fitCenter()
+                .into(imgView);
         //Cargo horarios
         reciclador = (RecyclerView) view.findViewById(R.id.reciclador);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -132,12 +150,14 @@ public class FragmentoEvento extends Fragment {
         @Override
         protected Weather doInBackground(String... params) {
             Weather weather = new Weather();
+           // String data = ( (new WeatherHttpClient()).getWeatherData(params[0]));
             String data = ( (new WeatherHttpClient()).getWeatherData(params[0]));
-
             try {
                 weather = JSONWeatherParser.getWeather(data);
+                imagen=weather.currentCondition.getIcon();
 
-                weather.iconData = ( (new WeatherHttpClient()).getImage(weather.currentCondition.getIcon()));
+
+                //weather.iconData = ( (new WeatherHttpClient()).getImage(weather.currentCondition.getIcon()));
 
             } catch (JSONException e) {
                 e.printStackTrace();

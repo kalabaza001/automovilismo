@@ -9,8 +9,10 @@ import java.net.URL;
 
 public class WeatherHttpClient {
 
-    private static String BASE_URL = "http://api.openweathermap.org/data/2.5/weather?q=";
-    private static String IMG_URL = "http://openweathermap.org/img/w/";
+
+    private static String BASE_URL = "http://api.openweathermap.org/data/2.5/weather?";
+
+
 
     public String getWeatherData(String location) {
         HttpURLConnection con = null ;
@@ -47,12 +49,16 @@ public class WeatherHttpClient {
 
     }
 
-    public byte[] getImage(String code) {
+    /*public byte[] getImage(String code) {
         HttpURLConnection con = null ;
         InputStream is = null;
         try {
-            con = (HttpURLConnection) ( new URL(IMG_URL + code + ".png")).openConnection();
+            //con = (HttpURLConnection) ( new URL(IMG_URL + code + ".png")).openConnection();
+            con = (HttpURLConnection) ( new URL("http://openweathermap.org/img/w/04d.png")).openConnection();
             con.setRequestMethod("GET");
+            con.setConnectTimeout(30000);
+            con.setReadTimeout(30000);
+            con.setInstanceFollowRedirects(true);
             con.setDoInput(true);
             con.setDoOutput(true);
             con.connect();
@@ -77,5 +83,5 @@ public class WeatherHttpClient {
 
         return null;
 
-    }
+    }*/
 }
