@@ -2,41 +2,32 @@ package com.ort.automovilismo.ui.fragmentos;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.location.Criteria;
-import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Utils;
 import com.ort.automovilismo.ui.DataParser;
-
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -46,7 +37,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 
 public class FragmentoMapa extends Fragment
         implements OnMapReadyCallback, LocationListener {
@@ -57,13 +47,9 @@ public class FragmentoMapa extends Fragment
     private double latitud =-34.90317866;
     private double longitud=-56.179533;
 
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
 
         View view = inflater.inflate(R.layout.fragmento_mapa, container, false);
 
@@ -75,7 +61,6 @@ public class FragmentoMapa extends Fragment
         MarkerPoints = new ArrayList<>();
         tvLatitud = (TextView) view.findViewById(R.id.tvLatitud);
         tvLongitud = (TextView) view.findViewById(R.id.tvLongitud);
-
 
         return view;
     }
@@ -90,7 +75,6 @@ public class FragmentoMapa extends Fragment
         map.setBuildingsEnabled(true);
 
         map.getUiSettings().setZoomControlsEnabled(true);
-
 
         LatLng cine = new LatLng(latitud, longitud);
 
@@ -128,8 +112,6 @@ public class FragmentoMapa extends Fragment
             }
         }
             //Necesitamos posicion actual del gps
-
-
         map.addMarker(new MarkerOptions()
                 .position(cine)
                 .title("Cine")
@@ -335,8 +317,6 @@ public class FragmentoMapa extends Fragment
             }
         }
     }
-
-
 
 }
 

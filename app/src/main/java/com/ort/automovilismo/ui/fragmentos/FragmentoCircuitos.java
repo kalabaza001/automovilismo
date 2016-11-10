@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,16 +13,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Circuito;
 import com.ort.automovilismo.modelo.Utils;
 import com.ort.automovilismo.ui.RecyclerClickListener;
 import com.ort.automovilismo.ui.adaptadores.AdaptadorCircuito;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -38,7 +34,6 @@ public class FragmentoCircuitos extends Fragment {
     private ProgressDialog progressDiag;
     private Button botonIr;
 
-
     public FragmentoCircuitos() {
     }
 
@@ -46,7 +41,6 @@ public class FragmentoCircuitos extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        //Consumo servicio
         View view = inflater.inflate(R.layout.fragmento_circuitos, container, false);
         return view;
     }
@@ -54,13 +48,12 @@ public class FragmentoCircuitos extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-       // new GetDataTask(getActivity()).execute("http://10.0.2.2:8080/circuitos");
-      //  new GetDataTask(getActivity()).execute("http://192.168.2.106:8080/circuitos");
+
         new GetDataTask(getActivity()).execute(Utils.getServidor() + "circuitos");
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         progressDiag = new ProgressDialog(getActivity());
         progressDiag.setMessage("loading");
@@ -69,7 +62,6 @@ public class FragmentoCircuitos extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         reciclador.setLayoutManager(layoutManager);
-
     }
 
     private class GetDataTask extends AsyncTask<String, Void, String> {
@@ -82,10 +74,8 @@ public class FragmentoCircuitos extends Fragment {
 
         protected String doInBackground(String... urls) {
             try {
-                // CONEXION
                 URL url = new URL(urls[0]);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                //con.setRequestProperty("_id", String.valueOf(idAct));
                 con.connect();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
                 String valor = reader.readLine();
@@ -141,10 +131,7 @@ public class FragmentoCircuitos extends Fragment {
                 adaptador.setListener(new RecyclerClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        // getFragmentManager().beginTransaction().replace(R.id.contenedor_principal, FragmentoPilotos.newInstance()).addToBackStack(null).commit();
 
-
-                        // Create fragment and give it an argument for the selected article
                         FragmentoCircuito newFragment = new FragmentoCircuito();
                         Bundle args = new Bundle();
                        //Paso los datos al otro fragment
@@ -154,24 +141,14 @@ public class FragmentoCircuitos extends Fragment {
 
                         FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
-                        // Replace whatever is in the fragment_container view with this fragment,
-                        // and add the transaction to the back stack so the user can navigate back
                         transaction.replace(R.id.contenedor_principal, newFragment);
                         transaction.addToBackStack(null);
 
-                        // Commit the transaction
                         transaction.commit();
-
-                      //  Intent intent = new Intent(getActivity(), ActividadPrincipal.class);
-                      //  startActivity(intent);
-
                     }
                 });
                 reciclador.setAdapter(adaptador);
                 progressDiag.dismiss();
-
-
-
             }
         }
     }

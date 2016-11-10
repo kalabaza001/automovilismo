@@ -1,8 +1,10 @@
 package com.ort.automovilismo.ui.fragmentos;
 
 import android.app.ProgressDialog;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,20 +16,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Evento;
-import com.ort.automovilismo.modelo.Utils;
+import com.ort.automovilismo.modelo.Weather;
+import com.ort.automovilismo.ui.JSONWeatherParser;
 import com.ort.automovilismo.ui.ResultadosFragment;
+import com.ort.automovilismo.ui.WeatherHttpClient;
 import com.ort.automovilismo.ui.adaptadores.AdaptadorHorarios;
-
+import org.json.JSONException;
 import java.util.ArrayList;
 
-/**
- * Fragmento que representa el contenido de cada pestaña dentro de la sección "Categorías"
- */
 public class FragmentoEvento extends Fragment {
 
     private static final String EVENTO = "Evento";
@@ -35,7 +35,17 @@ public class FragmentoEvento extends Fragment {
     private ProgressDialog progressDiag;
     private RecyclerView reciclador;
     private GridLayoutManager layoutManager;
-    //private ArrayList<Evento> LEventos = new ArrayList<Evento>();s
+
+    // ******** CLIMA ************ //
+    private TextView condDescr;
+    private TextView temp;
+    private TextView press;
+    private TextView windSpeed;
+    private TextView windDeg;
+    private TextView hum;
+    private ImageView imgView;
+    String city = "Montevideo,UY";
+    // FIN-CLIMA***************** //
 
     public static FragmentoEvento nuevaInstancia(Evento evento) {
         FragmentoEvento fragment = new FragmentoEvento();
@@ -55,11 +65,10 @@ public class FragmentoEvento extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        //new GetDataTask(getActivity()).execute("http://10.0.2.2:8080/eventos");
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         final Evento evento = (Evento) getArguments().getSerializable(EVENTO);
@@ -75,24 +84,33 @@ public class FragmentoEvento extends Fragment {
         Button btnResultados = (Button) view.findViewById(R.id.btnResultados);
 
 
+        // ******** CLIMA ************ //
+        condDescr = (TextView) view.findViewById(R.id.condDescr);
+        temp = (TextView) view.findViewById(R.id.temp);
+        hum = (TextView) view.findViewById(R.id.hum);
+        press = (TextView) view.findViewById(R.id.press);
+        windSpeed = (TextView) view.findViewById(R.id.windSpeed);
+        windDeg = (TextView) view.findViewById(R.id.windDeg);
+        imgView = (ImageView) view.findViewById(R.id.condIcon);
+
+        JSONWeatherTask task = new JSONWeatherTask();
+        task.execute(new String[]{city});
+        // FIN-CLIMA***************** //
+
         tituloEvento.setText(evento.getTitulo());
         fechas.setText(evento.getsFecha());
         circuitoNombre.setText(evento.getCircuito().getNombre());
         circuitoNumero.setText(evento.getCircuito().getNumero());
         longitud.setText(String.valueOf(evento.getCircuito().getLongitud()));
         curvas.setText(String.valueOf(evento.getCircuito().getCurvas()));
-        //String urlImage = Utils.getServidor() + "images_pilotos/" + evento.getCircuito().getIdDrawable() + ".jpg";
         String urlImage = "http://www.baremos.uy:8000/images_pilotos/" + evento.getCircuito().getIdDrawable() + ".jpg";
         Log.d("CIRCUITOU: ", urlImage);
         Glide.with(view.getContext())
                 .load(urlImage)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                // .placeholder(R.drawable.placeholder)
                 .error(R.drawable.auvo_error)
-                // .centerCrop()
                 .fitCenter()
                 .into(circuitoMiniatura);
-
 
         //Cargo horarios
         reciclador = (RecyclerView) view.findViewById(R.id.reciclador);
@@ -106,8 +124,45 @@ public class FragmentoEvento extends Fragment {
             public void onClick(View view) {
                 ResultadosFragment resultadosFragment = ResultadosFragment.newInstance(evento.getResultados());
                 getFragmentManager().beginTransaction().replace(R.id.contenedor_principal, resultadosFragment).addToBackStack("").commit();
-                //getFragmentManager().beginTransaction().add(R.id.contenedor_principal,resultadosFragment).addToBackStack("").commit();
             }
         });
+    }
+    private class JSONWeatherTask extends AsyncTask<String, Void, Weather> {
+
+        @Override
+        protected Weather doInBackground(String... params) {
+            Weather weather = new Weather();
+            String data = ( (new WeatherHttpClient()).getWeatherData(params[0]));
+
+            try {
+                weather = JSONWeatherParser.getWeather(data);
+
+                weather.iconData = ( (new WeatherHttpClient()).getImage(weather.currentCondition.getIcon()));
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return weather;
+        }
+
+        @Override
+        protected void onPostExecute(Weather weather) {
+            super.onPostExecute(weather);
+
+            if (weather.iconData != null && weather.iconData.length > 0) {
+                Bitmap img = BitmapFactory.decodeByteArray(weather.iconData, 0, weather.iconData.length);
+                imgView.setImageBitmap(img);
+            }
+
+           condDescr.setText(weather.currentCondition.getDescr());
+           // condDescr.setText(weather.currentCondition.getCondition() + "(" + weather.currentCondition.getDescr() + ")");
+            //condDescr.setText(weather.currentCondition.getCondition());
+            temp.setText("" + Math.round((weather.temperature.getTemp() - 273.15)) + "ºC");
+            hum.setText("" + weather.currentCondition.getHumidity() + "%");
+            press.setText("" + weather.currentCondition.getPressure() + " hPa");
+            windSpeed.setText("" + + Math.round(weather.wind.getSpeed() * 1.6) + " kph");
+            windDeg.setText("" + weather.wind.getDeg() + "º");
+
+        }
     }
 }

@@ -1,15 +1,10 @@
 package com.ort.automovilismo.modelo;
 
-/**
- * Created by andres on 17/10/16.
- */
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-
 import java.io.InputStream;
 import java.io.OutputStream;
 
@@ -61,8 +56,7 @@ public class    Utils {
     }
 
     public static String getServidor(){
-        return "http://10.0.2.2:8080/";
-        //return "http://www.baremos.uy:8000/";
+        return "http://www.baremos.uy:8000/";
     }
 
 }

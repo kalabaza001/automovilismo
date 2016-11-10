@@ -1,9 +1,5 @@
 package com.ort.automovilismo.modelo;
 
-/**
- * Created by andres on 05/11/16.
- */
-
 public class ResultadoEvento {
 
     private int posicion;

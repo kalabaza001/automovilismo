@@ -1,28 +1,24 @@
 package com.ort.automovilismo.ui.adaptadores;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Piloto;
 import com.ort.automovilismo.modelo.Utils;
-
 import java.util.List;
-
 
 public class AdaptadorPilotos
         extends RecyclerView.Adapter<AdaptadorPilotos.ViewHolder> {
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        // Campos respectivos de un item
+
         public TextView numero;
         public TextView nombre;
         public ImageView imagenPiloto;
@@ -62,12 +58,8 @@ public class AdaptadorPilotos
         Glide.with(viewHolder.itemView.getContext())
                 .load(urlImage)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-               // .placeholder(R.drawable.placeholder)
-                //.error(R.drawable.auvo_error)
-               // .centerCrop()
                 .fitCenter()
                 .into(viewHolder.imagenPiloto);
-
 
         viewHolder.nombre.setText(item.getNombre() + " " + item.getApellido());
         viewHolder.numero.setText(Integer.toString(item.getNumero()));

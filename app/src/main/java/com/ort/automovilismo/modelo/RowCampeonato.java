@@ -1,15 +1,7 @@
 package com.ort.automovilismo.modelo;
 
-import android.util.Log;
-
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.StringTokenizer;
-
-/**
- * Created by andres on 17/10/16.
- */
 
 public class RowCampeonato implements Serializable {
 
@@ -146,18 +138,15 @@ public class RowCampeonato implements Serializable {
         fechas.add(novenaFecha);
         fechas.add(decimaFecha);
         setTotal(0);
-        //Log.d("Piloto: " ,getPiloto().getApellido());
+
         for (String fecha:fechas) {
             try {
                 int puntoFecha = Integer.valueOf(fecha);
-                //Log.d("Puntos:", fecha);
                 total += puntoFecha;
             }catch (Exception e){
-                //Log.e("Suma puntos fecha",fecha);
             }
         }
             setTotal(total);
-            //Log.d("Total", Integer.toString(total));
             return total;
     }
 

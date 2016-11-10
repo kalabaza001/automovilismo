@@ -1,9 +1,5 @@
 package com.ort.automovilismo.modelo;
 
-/**
- * Created by andres on 01/11/16.
- */
-
 public class RowCarrera {
     private String posicion;
     private String tiempoDia;

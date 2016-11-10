@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ort.automovilismo.R;
@@ -15,7 +14,6 @@ import com.ort.automovilismo.modelo.Utils;
 import com.ort.automovilismo.ui.RecyclerClickListener;
 
 import java.util.List;
-
 
 public class AdaptadorCampeonato
         extends RecyclerView.Adapter<AdaptadorCampeonato.ViewHolder> {
@@ -50,24 +48,18 @@ public class AdaptadorCampeonato
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         RowCampeonato item = RowCampeonatoList.get(i);
-        //Log.d("Piloto: " + item.getPiloto().getApellido() + , listadoPiloto.get(i).getNombre() + " " + listadoPiloto.get(i).getApellido());
         viewHolder.posicion.setText(Integer.toString(item.getPosicion()));
         viewHolder.total.setText(Integer.toString(item.getTotal()));
         viewHolder.nombre.setText(item.getPiloto().getNombre() + " " + item.getPiloto().getApellido());
         String urlImage = Utils.getServidor() + "images_pilotos/" + item.getPiloto().getIdDrawable() + ".jpg";
-        //String urlImage = "http://www.baremos.uy:8000/images_pilotos/" + item.getPiloto().getIdDrawable() + ".jpg";
         Glide.with(viewHolder.itemView.getContext())
                 .load(urlImage)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                // .placeholder(R.drawable.placeholder)
-                //.error(R.drawable.auvo_error)
-                // .centerCrop()
                 .fitCenter()
                 .into(viewHolder.miniaturaPiloto);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        // Campos respectivos de un item
         public TextView posicion;
         public TextView numero;
         public TextView nombre;

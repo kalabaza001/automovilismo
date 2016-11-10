@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.RowCarrera;
 import com.ort.automovilismo.ui.RecyclerClickListener;
@@ -54,7 +53,6 @@ public class AdaptadorCarrera
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        // Campos respectivos de un item
         public TextView posicion;
         public TextView numero;
         public TextView nombre;

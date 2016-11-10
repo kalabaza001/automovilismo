@@ -15,13 +15,12 @@ import com.ort.automovilismo.ui.adaptadores.AdaptadorPilotosCampeonato;
 
 import java.util.ArrayList;
 
-
 public class FragmentoPilotosCampeonato extends Fragment {
     private RecyclerView reciclador;
     private AdaptadorPilotosCampeonato adaptador;
     private ProgressDialog progressDiag;
     final ArrayList<RowCampeonato> LRows = new ArrayList<RowCampeonato>();
-    //Datos del piloto
+
     final static String ROW_CAMPEONATO = "Row";
 
     private RowCampeonato rowCampeonato;

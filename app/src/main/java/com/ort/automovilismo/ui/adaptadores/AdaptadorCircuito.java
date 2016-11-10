@@ -1,13 +1,11 @@
 package com.ort.automovilismo.ui.adaptadores;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ort.automovilismo.R;
@@ -52,33 +50,22 @@ public class AdaptadorCircuito
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         Circuito item = listaCircuitos.get(i);
-        //Lalaaa
         viewHolder.nombre.setText(item.getNombre());
         viewHolder.numero.setText(item.getNumero());
-        //viewHolder.longitud.setText(String.valueOf(item.getLongitud()));
-       // viewHolder.curvas.setText(String.valueOf(item.getCurvas()));
         String urlImage = Utils.getServidor() + "images_pilotos/" + item.getIdDrawable() + ".jpg";
         Glide.with(viewHolder.itemView.getContext())
                 .load(urlImage)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .error(R.drawable.auvo_error)
-                // .centerCrop()
                 .fitCenter()
                 .into(viewHolder.imagenCircuito);
-        //viewHolder.primeraF.setText(item.getPrimerFecha());
-        //viewHolder.segundaF.setText(item.getSegundaFecha());
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        // Campos respectivos de un item
+
         public TextView nombre;
         public TextView numero;
-     //   public TextView longitud;
-     //   public TextView curvas;
         public ImageView imagenCircuito;
-      //  public TextView record;
-     //   public TextView historia;
-     //   public Button botonIr;
 
 
         public ViewHolder(View v) {
@@ -86,14 +73,6 @@ public class AdaptadorCircuito
             imagenCircuito = (ImageView) v.findViewById(R.id.circuito_miniatura);
             nombre = (TextView) v.findViewById(R.id.circuito_nombre);
             numero = (TextView) v.findViewById(R.id.circuito_numero);
-         //   longitud = (TextView) v.findViewById(R.id.circuito_longitud);
-         //   curvas = (TextView) v.findViewById(R.id.circuito_curvas);
-
-
-
-            //// TODO: 25/10/16 Hacer implementacion de record e historia
-            //record = (TextView) v.findViewById(R.id.circuito_record);
-            //historia = (TextView) v.findViewById(R.id.circuito_historia);
 
             v.setOnClickListener(new View.OnClickListener() {
                 @Override

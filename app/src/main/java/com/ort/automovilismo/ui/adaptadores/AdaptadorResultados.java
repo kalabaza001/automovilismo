@@ -5,15 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.ResultadoEvento;
-
 import java.util.List;
 
-/**
- * TODO: Replace the implementation with code for your data type.
- */
+
 public class AdaptadorResultados extends RecyclerView.Adapter<AdaptadorResultados.ViewHolder> {
 
     private final List<ResultadoEvento> listaResultadoEvento;

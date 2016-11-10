@@ -1,16 +1,8 @@
 package com.ort.automovilismo.modelo;
 
 import android.graphics.Bitmap;
-
-import com.ort.automovilismo.R;
-
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-/**
- * Modelo de datos estático para alimentar la aplicación
- */
 public class Piloto {
     private String idPiloto;
     private String nombre;
@@ -163,18 +155,4 @@ public class Piloto {
         this.numero = numero;
         this.marcaAuto = marcaAuto;
     }
-
-    /*public static final List<Piloto> PILOTOS = new ArrayList<Piloto>();
-
-     {
-        PILOTOS.add(new Piloto("Fernando Rama", "SIMCA" ,R.drawable.img_fernando_rama));
-        PILOTOS.add(new Piloto("Daniel Fresnedo", "ROLLS ROYS", R.drawable.img_daniel_fesnedo));
-        PILOTOS.add(new Piloto("Rodrigo Aramendia", "DKW", R.drawable.img_rodrigo_aramendia));
-        PILOTOS.add(new Piloto("Jorge Pontet", "LADA", R.drawable.img_jorge_pontet));
-        PILOTOS.add(new Piloto("Fabricio Larratea", "MIURA" ,R.drawable.img_fabricio_larratea));
-
-
-    }*/
-
-
 }

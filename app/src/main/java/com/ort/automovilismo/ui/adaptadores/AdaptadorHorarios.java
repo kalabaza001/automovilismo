@@ -7,19 +7,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Actividad;
-
 import java.util.List;
-
-/**
- * Created by andres on 05/11/16.
- */
 
 public class AdaptadorHorarios
         extends RecyclerView.Adapter<AdaptadorHorarios.ViewHolder> {
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        // Campos respectivos de un item
+
         public TextView hora;
         public TextView actividad;
 
@@ -53,6 +48,5 @@ public class AdaptadorHorarios
         Actividad item = listadoActividad.get(i);
         viewHolder.actividad.setText(item.getTitulo());
         viewHolder.hora.setText(item.getHoraDH());
-
     }
 }

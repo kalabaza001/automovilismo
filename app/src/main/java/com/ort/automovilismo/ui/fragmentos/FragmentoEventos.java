@@ -17,17 +17,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Actividad;
 import com.ort.automovilismo.modelo.Circuito;
 import com.ort.automovilismo.modelo.Evento;
 import com.ort.automovilismo.modelo.ResultadoEvento;
 import com.ort.automovilismo.modelo.Utils;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -63,8 +60,6 @@ public class FragmentoEventos extends Fragment {
 
         if (savedInstanceState == null) {
             insertarTabs(container);
-
-            // Setear adaptador al viewpager.
         }
 
         return view;
@@ -108,10 +103,6 @@ public class FragmentoEventos extends Fragment {
         appBarLayout.removeView(tabLayout);
     }
 
-    /**
-     * Un {@link FragmentStatePagerAdapter} que gestiona las secciones, fragmentos y
-     * títulos de las pestañas
-     */
     public class AdaptadorSecciones extends FragmentStatePagerAdapter {
         private final List<Fragment> fragmentos = new ArrayList<>();
         private final List<String> titulosFragmentos = new ArrayList<>();
@@ -155,7 +146,6 @@ public class FragmentoEventos extends Fragment {
                 // CONEXION
                 URL url = new URL(urls[0]);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                //con.setRequestProperty("_id", String.valueOf(idAct));
                 con.connect();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
                 String valor = reader.readLine();
@@ -172,8 +162,6 @@ public class FragmentoEventos extends Fragment {
             if (m_activity != null) {
                 try {
                     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-M-dd hh:mm:ss");
-                    //progressDiag.dismiss();
-                    // Instacio el JSON Object
                     JSONObject jsonObject = new JSONObject(result);
 
                     //Instancio el array de Pilotos en JSON

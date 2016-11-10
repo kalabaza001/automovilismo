@@ -1,14 +1,8 @@
 package com.ort.automovilismo.ui.fragmentos;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,26 +11,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Circuito;
-import com.ort.automovilismo.modelo.Piloto;
-import com.ort.automovilismo.modelo.RowCampeonato;
 import com.ort.automovilismo.modelo.Utils;
 import com.ort.automovilismo.ui.MapsActivity;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class FragmentoCircuito extends Fragment {
 
@@ -45,12 +25,9 @@ public class FragmentoCircuito extends Fragment {
     private TextView circuito_numero;
     private TextView circuito_largo;
     private TextView circuito_curvas;
-
-
     final static String CIRCUITO = "Circuito";
     private Circuito mCircuito;
     private Button mBotonIr;
-
 
     public FragmentoCircuito() {
     }
@@ -85,9 +62,7 @@ public class FragmentoCircuito extends Fragment {
         Glide.with(view.getContext())
                 .load(urlImage)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                // .placeholder(R.drawable.placeholder)
                 .error(R.drawable.auvo_error)
-                // .centerCrop()
                 .fitCenter()
                 .into(circuito_miniatura);
         mBotonIr = (Button) view.findViewById(R.id.btnIr);

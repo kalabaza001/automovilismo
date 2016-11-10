@@ -6,20 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.ImagenInicio;
 
-/**
- * Adaptador para mostrar las comidas más pedidas en la sección "Inicio"
- */
 public class AdaptadorInicio
         extends RecyclerView.Adapter<AdaptadorInicio.ViewHolder> {
 
-
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        // Campos respectivos de un item
+
         public TextView fechaImagen;
         public TextView tituloImagen;
         public ImageView imagen;
@@ -59,6 +54,5 @@ public class AdaptadorInicio
         viewHolder.tituloImagen.setText(""+item.getTitulo());
 
     }
-
 
 }

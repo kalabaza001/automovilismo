@@ -5,7 +5,6 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,17 +12,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Piloto;
 import com.ort.automovilismo.modelo.RowCarrera;
 import com.ort.automovilismo.modelo.Utils;
 import com.ort.automovilismo.ui.RecyclerClickListener;
 import com.ort.automovilismo.ui.adaptadores.AdaptadorCarrera;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -48,7 +44,7 @@ public class FragmentoCarrera extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //Consumo servicio
+
         View view = inflater.inflate(R.layout.fragmento_carrera, container, false);
         return view;
     }
@@ -73,7 +69,7 @@ public class FragmentoCarrera extends Fragment {
                             new GetDataTask(getActivity()).execute(Utils.getServidor() + "carrera/" + llamada);
                             llamada = llamada + 1;
                         } catch (Exception e) {
-                            // error, do something
+
                         }
                     }
                 });
@@ -85,7 +81,7 @@ public class FragmentoCarrera extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         progressDiag = new ProgressDialog(getActivity());
         progressDiag.setMessage("loading");
@@ -109,7 +105,6 @@ public class FragmentoCarrera extends Fragment {
                 // CONEXION
                 URL url = new URL(urls[0]);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                //con.setRequestProperty("_id", String.valueOf(idAct));
                 con.connect();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
                 String valor = reader.readLine();
@@ -159,7 +154,6 @@ public class FragmentoCarrera extends Fragment {
                             }
                             tiempoAnterior = simpleDateFormat.parse(tiempo);
 
-
                             //Datos del piloto
                             JSONObject jsonObjectPiloto = jsonObjectRowPasada.getJSONObject("piloto");
                             String nombre = jsonObjectPiloto.optString("nombre");
@@ -184,7 +178,6 @@ public class FragmentoCarrera extends Fragment {
                 });
                 reciclador.setAdapter(adaptador);
                 progressDiag.dismiss();
-                //viewPilotos();
             }
         }
     }

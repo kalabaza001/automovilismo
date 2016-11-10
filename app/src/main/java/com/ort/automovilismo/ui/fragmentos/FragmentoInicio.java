@@ -7,13 +7,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.ui.adaptadores.AdaptadorInicio;
 
-/**
- * Fragmento para la sección de "Inicio"
- */
 public class FragmentoInicio extends Fragment {
     private RecyclerView reciclador;
     private LinearLayoutManager layoutManager;

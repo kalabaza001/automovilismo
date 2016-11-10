@@ -7,21 +7,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.RowCampeonato;
-
 import java.util.List;
-
 
 public class AdaptadorPilotosCampeonato
         extends RecyclerView.Adapter<AdaptadorPilotosCampeonato.ViewHolder> {
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        // Campos respectivos de un item
+
         public TextView numero;
         public TextView nombre;
         public ImageView imagenPiloto;
@@ -41,7 +38,6 @@ public class AdaptadorPilotosCampeonato
         public ViewHolder(View v) {
             super(v);
             imagenPiloto = (ImageView) v.findViewById(R.id.miniatura_pilotos_campeonato);
-            // numero = (TextView) v.findViewById(R.id.numero_pilotos_campeonato);
             nombre = (TextView) v.findViewById(R.id.nombre_pilotos_campeonato);
             marcaAuto = (TextView) v.findViewById(R.id.marca_auto_pilotos_campeonato);
             primerFecha = (TextView) v.findViewById(R.id.primer_fecha_campeonato);
@@ -80,17 +76,12 @@ public class AdaptadorPilotosCampeonato
         RowCampeonato item = listadoRow.get(i);
         Log.d("Adapter ", item.toString());
         Glide.with(viewHolder.itemView.getContext())
-               // .load("http://superturismo.com.uy/wp-content/uploads/2015/10/rama-foto.jpg")
                 .load("http://imageshack.com/a/img921/4559/kLKnfL.jpg")
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-               // .placeholder(R.drawable.placeholder)
                 .error(R.drawable.auvo_error)
-               // .centerCrop()
                 .fitCenter()
                 .into(viewHolder.imagenPiloto);
 
-
-        //viewHolder.numero.setText(Integer.toString(item.getPiloto().getNumero()));
         String nom = item.getPiloto().getNombre() + " " + item.getPiloto().getApellido();
         viewHolder.nombre.setText(nom);
         viewHolder.marcaAuto.setText(item.getPiloto().getMarcaAuto());

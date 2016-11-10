@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,17 +12,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Piloto;
 import com.ort.automovilismo.modelo.RowCampeonato;
 import com.ort.automovilismo.modelo.Utils;
 import com.ort.automovilismo.ui.RecyclerClickListener;
 import com.ort.automovilismo.ui.adaptadores.AdaptadorCampeonato;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -46,7 +42,6 @@ public class FragmentoCampeonato extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        //Consumo servicio
         View view = inflater.inflate(R.layout.fragmento_campeonato2, container, false);
         return view;
     }
@@ -54,13 +49,11 @@ public class FragmentoCampeonato extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-       // new GetDataTask(getActivity()).execute("http://10.0.2.2:8080/campeonato");
         new GetDataTask(getActivity()).execute(Utils.getServidor() + "campeonato");
-
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         progressDiag = new ProgressDialog(getActivity());
         progressDiag.setMessage("loading");
@@ -81,10 +74,8 @@ public class FragmentoCampeonato extends Fragment {
 
         protected String doInBackground(String... urls) {
             try {
-                // CONEXION
                 URL url = new URL(urls[0]);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                //con.setRequestProperty("_id", String.valueOf(idAct));
                 con.connect();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
                 String valor = reader.readLine();
@@ -105,14 +96,11 @@ public class FragmentoCampeonato extends Fragment {
                     progressDiag.dismiss();
                     // Instacio el JSON Object
                     JSONObject jsonObject = new JSONObject(result);
-
                     //Instancio el array de Pilotos en JSON
                     JSONArray jsonArray = jsonObject.getJSONArray("desc");
-
                     //Cargo los datos del JSONArray a arrayList de pilotos
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObjectRowCampeonato = jsonArray.getJSONObject(i);
-
                         //Datos de puntaje
                         String idRowCampeonato = jsonObjectRowCampeonato.optString("_id");
                         int posicion = jsonObjectRowCampeonato.optInt("posicion");
@@ -142,7 +130,6 @@ public class FragmentoCampeonato extends Fragment {
                         int podios = jsonObjectPiloto.optInt("podios");
                         int campeonatos = jsonObjectPiloto.optInt("campeonatos");
                         String idDrawable = jsonObjectPiloto.optString("idDrawable");
-
                         Date ffNac = new Date();
                         Piloto piloto = new Piloto(idPiloto, nombre, apellido, ffNac, numero, marcaAuto, equipo, nacionalidad, puntos, podios, campeonatos, idDrawable);
                         RowCampeonato rowCampeonato = new RowCampeonato(idRowCampeonato, posicion, piloto,primerFecha,segundaFecha,terceraFecha,cuartaFecha,quintaFecha,sextaFecha,septimaFecha, octavaFecha, novenaFecha,decimaFecha);
@@ -156,10 +143,7 @@ public class FragmentoCampeonato extends Fragment {
                 adaptador.setListener(new RecyclerClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                       // getFragmentManager().beginTransaction().replace(R.id.contenedor_principal, FragmentoPilotos.newInstance()).addToBackStack(null).commit();
 
-
-                        // Create fragment and give it an argument for the selected article
                         FragmentoPilotosCampeonato newFragment = new FragmentoPilotosCampeonato();
                         Bundle args = new Bundle();
                         //Paso los datos al otro fragment
@@ -169,22 +153,14 @@ public class FragmentoCampeonato extends Fragment {
 
                         FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
-                        // Replace whatever is in the fragment_container view with this fragment,
-                        // and add the transaction to the back stack so the user can navigate back
                         transaction.replace(R.id.contenedor_principal, newFragment);
                         transaction.addToBackStack(null);
 
-                        // Commit the transaction
                         transaction.commit();
-
-                        //   Toast.makeText(getContext(), adaptador.getRowCampeonatoList().get(position).getPosicion()+"", Toast.LENGTH_LONG).show();
-                        //Toast.makeText(getContext(), adaptador.getRowCampeonatoList().get(position).getPosicion() + " - " + adaptador.getRowCampeonatoList().get(position).getPiloto().getApellido(), Toast.LENGTH_LONG).show();
-
                     }
                 });
                 reciclador.setAdapter(adaptador);
                 progressDiag.dismiss();
-                //viewPilotos();
             }
         }
     }

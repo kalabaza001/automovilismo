@@ -28,5 +28,8 @@
     <string name="Fecha">Fecha</string>
     <string name="Puntos">Puntos</string>
     <string name="Horarios">Horarios</string>
+    <string name="viento_titulo">Viento:</string>
+    <string name="humedad_titulo">Humedad:</string>
+    <string name="presion_titulo">Presión:</string>
 
 </resources>

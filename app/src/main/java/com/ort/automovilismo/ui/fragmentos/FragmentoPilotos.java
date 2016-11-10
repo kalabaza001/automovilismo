@@ -13,15 +13,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Piloto;
 import com.ort.automovilismo.modelo.Utils;
 import com.ort.automovilismo.ui.adaptadores.AdaptadorPilotos;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -45,18 +42,12 @@ public class FragmentoPilotos extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        //Consumo servicio
-       // new GetDataTask(getActivity()).execute("http://10.0.2.2:8080/pilotos");
         new GetDataTask(getActivity()).execute(Utils.getServidor() + "pilotos");
-       // new GetDataTask(getActivity()).execute("http://www.baremos.uy:8000/pilotos");
-
-
 
         //Lo duermo porque a veces tarde minimo
         progressDiag = new ProgressDialog(getActivity());
         progressDiag.setMessage("loading");
         progressDiag.show();
-        //ProgressDialog progressBar = ProgressDialog.show(getActivity(), "Espere por favor...", "Pilotos...", true);
         SystemClock.sleep(1000);
 
         View view = inflater.inflate(R.layout.fragmento_pilotos, container, false);
@@ -66,8 +57,6 @@ public class FragmentoPilotos extends Fragment {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         reciclador.setLayoutManager(layoutManager);
 
-        //adaptador = new AdaptadorPilotos(LPilotos);
-        //reciclador.setAdapter(adaptador);
         return view;
     }
 
@@ -88,7 +77,6 @@ public class FragmentoPilotos extends Fragment {
                 // CONEXION
                 URL url = new URL(urls[0]);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                //con.setRequestProperty("_id", String.valueOf(idAct));
                 con.connect();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
                 String valor = reader.readLine();
@@ -129,8 +117,6 @@ public class FragmentoPilotos extends Fragment {
                         int campeonatos = jsonObjectPiloto.optInt("campeonatos");
                         String idDrawable = jsonObjectPiloto.optString("idDrawable");
 
-                        //Date ffNac = formatter.parse(fNac);
-
                         Date ffNac = new Date();
                         Piloto p = new Piloto(idPiloto, nombre, apellido, ffNac, numero, marcaAuto, equipo, nacionalidad, puntos, podios, campeonatos, idDrawable);
                         Log.e("piloto:", p.getNombre() + " " + p.getApellido());
@@ -142,7 +128,6 @@ public class FragmentoPilotos extends Fragment {
                 adaptador = new AdaptadorPilotos(LPilotos);
                 reciclador.setAdapter(adaptador);
                 progressDiag.dismiss();
-                //viewPilotos();
             }
         }
     }

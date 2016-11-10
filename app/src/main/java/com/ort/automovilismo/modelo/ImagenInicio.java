@@ -1,13 +1,9 @@
 package com.ort.automovilismo.modelo;
 
 import com.ort.automovilismo.R;
-
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Modelo de datos estático para alimentar la aplicación
- */
 public class ImagenInicio {
     private String titulo;
     private String desc;
