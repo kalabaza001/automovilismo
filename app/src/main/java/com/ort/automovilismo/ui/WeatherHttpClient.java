@@ -12,10 +12,6 @@ public class WeatherHttpClient {
     private static String BASE_URL = "http://api.openweathermap.org/data/2.5/weather?q=";
     private static String IMG_URL = "http://openweathermap.org/img/w/";
 
-
-
-
-
     public String getWeatherData(String location) {
         HttpURLConnection con = null ;
         InputStream is = null;

@@ -32,4 +32,12 @@
     <string name="humedad_titulo">Humedad:</string>
     <string name="presion_titulo">Presión:</string>
 
+    <string-array name="map_types_list">
+
+        <item>Normal</item>
+        <item>Satellite</item>
+        <item>Hybrid</item>
+        <item>Terrain</item>
+    </string-array>
+
 </resources>
