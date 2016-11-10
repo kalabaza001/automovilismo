@@ -56,6 +56,7 @@ public class    Utils {
     }
 
     public static String getServidor(){
+        //return "http://10.0.2.2:8080/";
         return "http://www.baremos.uy:8000/";
     }
 

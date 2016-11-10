@@ -11,6 +11,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.RowCampeonato;
+import com.ort.automovilismo.modelo.Utils;
+
 import java.util.List;
 
 public class AdaptadorPilotosCampeonato
@@ -75,8 +77,9 @@ public class AdaptadorPilotosCampeonato
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         RowCampeonato item = listadoRow.get(i);
         Log.d("Adapter ", item.toString());
+        String urlImage = Utils.getServidor() + "images_pilotos/" + item.getPiloto().getIdDrawable() + ".jpg";
         Glide.with(viewHolder.itemView.getContext())
-                .load("http://imageshack.com/a/img921/4559/kLKnfL.jpg")
+                .load(urlImage)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .error(R.drawable.auvo_error)
                 .fitCenter()
