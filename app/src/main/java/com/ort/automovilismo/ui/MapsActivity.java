@@ -1,12 +1,9 @@
 package com.ort.automovilismo.ui;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.location.Criteria;
-import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -17,21 +14,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.PolylineOptions;
-import com.google.android.maps.MapController;
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Utils;
-
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -41,7 +33,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 
 public class MapsActivity extends AppCompatActivity
         implements OnMapReadyCallback, LocationListener {
@@ -106,7 +97,6 @@ public class MapsActivity extends AppCompatActivity
         map.setBuildingsEnabled(true);
 
         map.getUiSettings().setZoomControlsEnabled(true);
-
 
         LatLng circuito = new LatLng(latitud, longitud);
 

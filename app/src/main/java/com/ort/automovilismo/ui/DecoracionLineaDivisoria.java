@@ -6,13 +6,8 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-
 import com.ort.automovilismo.R;
 
-/**
- * ItemDecoration personalizado para dibujar la linea drawable/linea_divisoria.xml en los
- * elementos de un recycler view
- */
 public class DecoracionLineaDivisoria extends RecyclerView.ItemDecoration {
     private Drawable lineaDivisoria;
 
