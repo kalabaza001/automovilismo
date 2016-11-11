@@ -99,13 +99,15 @@ public class FragmentoEvento extends Fragment {
         imgView = (ImageView) view.findViewById(R.id.condIcon);
 
         String auxLatitud=evento.getCircuito().getLatitud()+"";
-        auxLatitud=auxLatitud.substring(0,2);
+        //auxLatitud=auxLatitud.substring(0,2);
         // imprimir latitud
+
         String auxLongitud=evento.getCircuito().getLongitud()+"";
-        auxLongitud=auxLongitud.substring(0,2);
+        //auxLongitud=auxLongitud.substring(0,2);
         // imprimir longitud
         JSONWeatherTask task = new JSONWeatherTask();
         String ubicacion="lat="+auxLatitud+"&lon="+auxLongitud;
+        //String ubicacion="lat=-34.7821679&lon=-55.9923278";
        // task.execute(new String[]{city});
         task.execute(new String[]{ubicacion});
         // FIN-CLIMA***************** //
@@ -117,7 +119,6 @@ public class FragmentoEvento extends Fragment {
         longitud.setText(String.valueOf(evento.getCircuito().getLongitud()));
         curvas.setText(String.valueOf(evento.getCircuito().getCurvas()));
         String urlImage = "http://www.baremos.uy:8000/images_pilotos/" + evento.getCircuito().getIdDrawable() + ".jpg";
-        Log.d("CIRCUITOU: ", urlImage);
         Glide.with(view.getContext())
                 .load(urlImage)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -141,6 +142,7 @@ public class FragmentoEvento extends Fragment {
             @Override
             public void onClick(View view) {
                 ResultadosFragment resultadosFragment = ResultadosFragment.newInstance(evento.getResultados());
+                getFragmentManager().popBackStackImmediate();
                 getFragmentManager().beginTransaction().replace(R.id.contenedor_principal, resultadosFragment).addToBackStack("").commit();
             }
         });

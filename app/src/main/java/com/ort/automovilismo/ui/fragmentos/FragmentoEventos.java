@@ -27,10 +27,14 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class FragmentoEventos extends Fragment {
@@ -172,6 +176,7 @@ public class FragmentoEventos extends Fragment {
                         JSONObject jsonObjectEvento = jsonArray.getJSONObject(i);
 
                         //Datos de evento
+                        int numeroEvento = jsonObjectEvento.optInt("numero");
                         String idEvento = jsonObjectEvento.optString("_id");
                         String titulo = jsonObjectEvento.optString("titulo");
                         String sFecha = jsonObjectEvento.optString("fechas");
@@ -180,12 +185,15 @@ public class FragmentoEventos extends Fragment {
                         JSONObject jsonObjectCitcuito = jsonObjectEvento.getJSONObject("circuito");
                         String nombreCircuito = jsonObjectCitcuito.optString("nombre");
                         String numeroCircuito = jsonObjectCitcuito.optString("numero");
-                        int longitudCircuito = jsonObjectCitcuito.optInt("longitud");
+                        double longitudCircuito = jsonObjectCitcuito.optDouble("longitud");
+                        double latitudCircuito = jsonObjectCitcuito.optDouble("latitud");
+                        double largoCircuito = jsonObjectCitcuito.optDouble("largo");
                         int curvasCircuito = jsonObjectCitcuito.optInt("curvas");
                         String recordCircuito = jsonObjectCitcuito.optString("record");
                         String historiaCircuito = jsonObjectCitcuito.optString("historia");
                         String idDrawableCircuito = jsonObjectCitcuito.optString("idDrawable");
-                        Circuito circuito = new Circuito(nombreCircuito, numeroCircuito, longitudCircuito, curvasCircuito, recordCircuito, historiaCircuito, idDrawableCircuito);
+                        //Circuito circuito = new Circuito(nombreCircuito, numeroCircuito, longitudCircuito, curvasCircuito, recordCircuito, historiaCircuito, idDrawableCircuito);
+                        Circuito circuito = new Circuito(nombreCircuito, numeroCircuito, largoCircuito,  curvasCircuito, recordCircuito,historiaCircuito, idDrawableCircuito, latitudCircuito, longitudCircuito);
 
                         //Obtengo las actividades
                         ArrayList<Actividad> listaActividad = new ArrayList<Actividad>();
@@ -209,15 +217,15 @@ public class FragmentoEventos extends Fragment {
                             ResultadoEvento resultado = new ResultadoEvento(pos, numero, nombrePiloto);
                             listaResultado.add(resultado);
                         }
-                        Evento evento = new Evento(idEvento, titulo, sFecha, circuito, listaActividad, listaResultado);
+                        Evento evento = new Evento(numeroEvento, idEvento, titulo, sFecha, circuito, listaActividad, listaResultado);
 
                         Log.d("Eventos:", evento.toString());
                         ListaEventos.add(evento);
                     }
-
                 } catch (Exception ex) {
                     Log.e("ERROR", ex.getMessage());
                 }
+
                 poblarViewPager();
                 progressDiag.dismiss();
             }

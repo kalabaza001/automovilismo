@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Evento implements Serializable {
+    private int numero;
     private String idEvento;
     private String titulo;
     private Date fecha;
@@ -16,6 +17,14 @@ public class Evento implements Serializable {
 
     private int vueltas;
     private String clima;
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
 
     public String getsFecha() {
         return sFecha;
@@ -104,7 +113,8 @@ public class Evento implements Serializable {
         this.vueltas = vueltas;
     }
 
-    public Evento(String idEvento, String titulo, String sFecha, Circuito circuito, List<Actividad> listaActividades, ArrayList<ResultadoEvento> listaResultado) {
+    public Evento(int numero, String idEvento, String titulo, String sFecha, Circuito circuito, List<Actividad> listaActividades, ArrayList<ResultadoEvento> listaResultado) {
+        this.numero = numero;
         this.idEvento = idEvento;
         this.titulo = titulo;
         this.sFecha = sFecha;
@@ -122,4 +132,5 @@ public class Evento implements Serializable {
                 ", Circuito='" + circuito.getNombre() + " - " + circuito.getNumero() + '\'' +
                 '}';
     }
+
 }

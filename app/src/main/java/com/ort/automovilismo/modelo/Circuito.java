@@ -105,6 +105,7 @@ public class Circuito  implements Serializable {
         this.idDrawable = idDrawable;
         this.latitud = latitud;
         this.longitud = longitud;
+        this.largo = largo;
     }
 
     public Circuito(String nombre, String numero, double longitud, int curvas, String record, String historia, String idDrawable) {
@@ -115,5 +116,18 @@ public class Circuito  implements Serializable {
         this.record = record;
         this.historia = historia;
         this.idDrawable = idDrawable;
+    }
+
+    public Circuito( String nombre, String numero, double largo, int curvas, String record, String historia, String idDrawable, double latitud, double longitud) {
+        this.nombre = nombre;
+        this.numero = numero;
+        this.largo = largo;
+        this.curvas = curvas;
+        this.record = record;
+        this.historia = historia;
+        this.idDrawable = idDrawable;
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.largo = largo;
     }
 }

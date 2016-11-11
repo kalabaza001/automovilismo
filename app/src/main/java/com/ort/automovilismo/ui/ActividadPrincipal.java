@@ -120,7 +120,7 @@ public class ActividadPrincipal extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (getFragmentManager().getBackStackEntryCount() > 0 ){
+        if (getFragmentManager().getBackStackEntryCount() > 1 ){
             getFragmentManager().popBackStack();
         } else {
             super.onBackPressed();
