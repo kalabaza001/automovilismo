@@ -41,15 +41,13 @@ public class FragmentoPilotos extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        new GetDataTask(getActivity()).execute(Utils.getServidor() + "pilotos");
-
         //Lo duermo porque a veces tarde minimo
         progressDiag = new ProgressDialog(getActivity());
         progressDiag.setMessage("loading");
         progressDiag.show();
-        //SystemClock.sleep(1000);
 
+
+        new GetDataTask(getActivity()).execute(Utils.getServidor() + "pilotos");
         View view = inflater.inflate(R.layout.fragmento_pilotos, container, false);
 
         reciclador = (RecyclerView) view.findViewById(R.id.reciclador);
