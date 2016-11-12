@@ -50,22 +50,20 @@ public class FragmentoEventos extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        progressDiag = new ProgressDialog(getActivity());
-        progressDiag.setMessage("loading");
-        progressDiag.show();
         new GetDataTask(getActivity()).execute(Utils.getServidor() + "eventos");
-        progressDiag.dismiss();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        progressDiag = new ProgressDialog(getActivity());
+        progressDiag.setMessage("loading");
+        progressDiag.show();
         View view = inflater.inflate(R.layout.fragmento_paginado, container, false);
 
         if (savedInstanceState == null) {
             insertarTabs(container);
         }
-
         return view;
     }
 
