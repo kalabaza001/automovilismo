@@ -26,7 +26,6 @@ public class    Utils {
         catch(Exception ex){}
     }
 
-
     public static boolean isOnline(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();

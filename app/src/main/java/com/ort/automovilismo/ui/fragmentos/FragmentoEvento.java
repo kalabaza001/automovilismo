@@ -106,8 +106,8 @@ public class FragmentoEvento extends Fragment {
         //auxLongitud=auxLongitud.substring(0,2);
         // imprimir longitud
         JSONWeatherTask task = new JSONWeatherTask();
-        String ubicacion="lat="+auxLatitud+"&lon="+auxLongitud;
-        //String ubicacion="lat=-34.7821679&lon=-55.9923278";
+        //String ubicacion="lat="+auxLatitud+"&lon="+auxLongitud;
+        String ubicacion="lat=-34.7821679&lon=-55.9923278";
        // task.execute(new String[]{city});
         task.execute(new String[]{ubicacion});
         // FIN-CLIMA***************** //

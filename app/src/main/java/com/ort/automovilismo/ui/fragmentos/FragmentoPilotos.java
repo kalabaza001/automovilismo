@@ -48,7 +48,7 @@ public class FragmentoPilotos extends Fragment {
         progressDiag = new ProgressDialog(getActivity());
         progressDiag.setMessage("loading");
         progressDiag.show();
-        SystemClock.sleep(1000);
+        //SystemClock.sleep(1000);
 
         View view = inflater.inflate(R.layout.fragmento_pilotos, container, false);
 

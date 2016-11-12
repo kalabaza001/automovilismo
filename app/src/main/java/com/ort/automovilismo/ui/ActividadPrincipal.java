@@ -90,6 +90,12 @@ public class ActividadPrincipal extends AppCompatActivity {
                 fragmentoGenerico = new FragmentoCarrera();
                 break;
         }
+
+        // Borra el stack cuando se vuelve al inicio
+        for (int h = 1; h < fragmentManager.getBackStackEntryCount(); h++){
+            fragmentManager.popBackStack();
+        }
+
         if (fragmentoGenerico != null) {
             fragmentManager
                     .beginTransaction()
@@ -100,6 +106,11 @@ public class ActividadPrincipal extends AppCompatActivity {
 
         // Setear título actual
         setTitle(itemDrawer.getTitle());
+
+        if (itemDrawer.getItemId() == R.id.item_inicio){
+            setTitle("Inicio");
+        }
+
     }
 
     @Override
@@ -123,6 +134,12 @@ public class ActividadPrincipal extends AppCompatActivity {
         if (getFragmentManager().getBackStackEntryCount() > 1 ){
             getFragmentManager().popBackStack();
         } else {
+            //Quitar esto para hacer bien el back stack, el problema es el titlo
+            /*if (getFragmentManager().getBackStackEntryCount()==0){
+                setTitle("Inicio");
+                NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+                seleccionarItem(navigationView.getMenu().getItem(0));
+            }*/
             super.onBackPressed();
         }
     }
