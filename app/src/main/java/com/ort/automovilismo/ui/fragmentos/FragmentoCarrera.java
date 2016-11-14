@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.Piloto;
 import com.ort.automovilismo.modelo.RowCarrera;
@@ -69,7 +71,7 @@ public class FragmentoCarrera extends Fragment {
                             new GetDataTask(getActivity()).execute(Utils.getServidor() + "carrera/" + llamada);
                             llamada = llamada + 1;
                         } catch (Exception e) {
-
+                            Log.e("Resultados carrera", e.getMessage());
                         }
                     }
                 });
@@ -152,6 +154,9 @@ public class FragmentoCarrera extends Fragment {
                                 sec = millis / 1000.000;
                                 diferencia = String.valueOf(Math.abs(sec));
                             }
+                            if (posicion.equals("1")){
+                                diferencia = "-";
+                            }
                             tiempoAnterior = simpleDateFormat.parse(tiempo);
 
                             //Datos del piloto
@@ -170,6 +175,9 @@ public class FragmentoCarrera extends Fragment {
                     Log.e("ERROR", ex.getMessage());
                 }
                 adaptador = new AdaptadorCarrera(LRows);
+                if (LRows.size()== 0){
+                    Toast.makeText(getActivity(),"La carrera ha terminado",Toast.LENGTH_LONG).show();
+                }
                 adaptador.setListener(new RecyclerClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {

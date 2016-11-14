@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import com.ort.automovilismo.R;
 import com.ort.automovilismo.modelo.ResultadoEvento;
 import com.ort.automovilismo.ui.adaptadores.AdaptadorResultados;
@@ -49,6 +51,9 @@ public class ResultadosFragment extends Fragment {
         reciclador.setLayoutManager(layoutManager);
         AdaptadorResultados adapter = new AdaptadorResultados(lista);
         reciclador.setAdapter(adapter);
+        if (lista.size() == 0){
+            Toast.makeText(getActivity(),"Esta carrera aún no se ha corrido",Toast.LENGTH_SHORT).show();
+        }
 
     }
 }
