@@ -1,6 +1,8 @@
 package com.ort.automovilismo.modelo;
 
-public class ResultadoEvento {
+import java.io.Serializable;
+
+public class ResultadoEvento implements Serializable {
 
     private int posicion;
     private int numero;

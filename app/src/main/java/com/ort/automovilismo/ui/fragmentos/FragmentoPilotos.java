@@ -117,7 +117,6 @@ public class FragmentoPilotos extends Fragment {
 
                         Date ffNac = new Date();
                         Piloto p = new Piloto(idPiloto, nombre, apellido, ffNac, numero, marcaAuto, equipo, nacionalidad, puntos, podios, campeonatos, idDrawable);
-                        Log.e("piloto:", p.getNombre() + " " + p.getApellido());
                         LPilotos.add(p);
                     }
                 } catch (Exception ex) {

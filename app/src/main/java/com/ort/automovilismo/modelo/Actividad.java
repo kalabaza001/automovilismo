@@ -1,8 +1,9 @@
 package com.ort.automovilismo.modelo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Actividad {
+public class Actividad implements Serializable {
     private String titulo;
     private Date fechaIncio;
     private Date fechaFin;
