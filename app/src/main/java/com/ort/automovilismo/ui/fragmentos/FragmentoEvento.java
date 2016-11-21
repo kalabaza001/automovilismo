@@ -122,7 +122,7 @@ public class FragmentoEvento extends Fragment {
         fechas.setText(evento.getsFecha());
         circuitoNombre.setText(evento.getCircuito().getNombre());
         circuitoNumero.setText(evento.getCircuito().getNumero());
-        longitud.setText(String.valueOf(evento.getCircuito().getLongitud()));
+        longitud.setText(String.valueOf(evento.getCircuito().getLargo()));
         curvas.setText(String.valueOf(evento.getCircuito().getCurvas()));
         String urlImage = "http://www.baremos.uy:8000/images_pilotos/" + evento.getCircuito().getIdDrawable() + ".jpg";
         Glide.with(view.getContext())

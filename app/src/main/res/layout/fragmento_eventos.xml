@@ -143,6 +143,14 @@
                     android:text="@string/longitud"
                     android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
                     android:textColor="@android:color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="mts"
+                    android:layout_marginLeft="5dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+                    android:textColor="@android:color/black"/>
             </LinearLayout>
 
         </LinearLayout>

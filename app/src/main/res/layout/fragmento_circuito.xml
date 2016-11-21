@@ -107,7 +107,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ir"
+        android:text="Cómo llegar"
         android:id="@+id/btnIr"
         android:onClick="ir"
         android:layout_marginLeft="8dp"
