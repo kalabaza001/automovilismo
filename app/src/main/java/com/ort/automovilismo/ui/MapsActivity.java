@@ -1,6 +1,7 @@
 package com.ort.automovilismo.ui;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -11,6 +12,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +31,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.ort.automovilismo.R;
+import com.ort.automovilismo.modelo.Actividad;
 import com.ort.automovilismo.modelo.Utils;
 import org.json.JSONObject;
 import java.io.BufferedReader;
@@ -59,6 +62,10 @@ public class MapsActivity extends AppCompatActivity
             GoogleMap.MAP_TYPE_TERRAIN
     };
 
+    private static final String[] LOCATION_PERMS={
+            Manifest.permission.ACCESS_FINE_LOCATION
+    };
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -79,27 +86,33 @@ public class MapsActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
 
-        mapView = (MapView) findViewById(R.id.mi_mapa);
-        mapView.onCreate(savedInstanceState);
-        mapView.getMapAsync(this);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 2);
+        } else {
+            setContentView(R.layout.activity_maps);
 
-        MarkerPoints = new ArrayList<>();
+            mapView = (MapView) findViewById(R.id.mi_mapa);
+            mapView.onCreate(savedInstanceState);
+            mapView.getMapAsync(this);
 
-        mMapTypeSelector = (Spinner) findViewById(R.id.map_type_selector);
-        mMapTypeSelector.setOnItemSelectedListener(this);
+            MarkerPoints = new ArrayList<>();
 
-        Intent intent = getIntent();
-        Bundle extras = intent.getExtras();
+            mMapTypeSelector = (Spinner) findViewById(R.id.map_type_selector);
+            mMapTypeSelector.setOnItemSelectedListener(this);
 
-        if (extras != null) {
-            String auxLatitud = (String) extras.get("latitud");
-            String auxLongitud = (String) extras.get("longitud");
-            latitud = Double.parseDouble(extras.get("latitud").toString());
-            longitud = Double.parseDouble(extras.get("longitud").toString());
+            Intent intent = getIntent();
+            Bundle extras = intent.getExtras();
 
+            if (extras != null) {
+                String auxLatitud = (String) extras.get("latitud");
+                String auxLongitud = (String) extras.get("longitud");
+                latitud = Double.parseDouble(extras.get("latitud").toString());
+                longitud = Double.parseDouble(extras.get("longitud").toString());
+
+            }
         }
     }
 
